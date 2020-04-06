@@ -1,0 +1,184 @@
+﻿@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using FinalProjectPetey.Models
+@using FinalProjectPetey.Controllers;
+
+<br /><br /><br /><br />
+<h2>รายการสั่งซื้อ</h2>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/content/Index.css">
+    @Styles.Render("~/Content/Index.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<br />
+<body>
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table" align="center">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col">ชื่อสินค้า</th>
+                        <th scope="col">จำนวน</th>
+                        <th scope="col">ราคา</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{decimal summary = 0, Quantity = 0;
+                        int id = 0;
+                    }
+
+                    @foreach (item it in (List<item>)Session["cart"])
+                    {
+
+                        if (it.Pet.Pet_Id != null || it.Product.Product_Id != null || it.Trainer.Trainer_Id != null)
+                        {
+                            if (it.Pet.Pet_Id >= 1 && it.Pet.Pet_Id <= 39999)
+                            {
+                                id = it.Pet.Pet_Id;
+                            }
+                            else if (it.Product.Product_Id >= 40000 && it.Product.Product_Id <= 99500)
+                            {
+                                id = it.Product.Product_Id;
+                            }
+                            else if (it.Trainer.Trainer_Id >= 99500 && it.Trainer.Trainer_Id <= 110000)
+                            {
+                                id = it.Trainer.Trainer_Id;
+                            }else{
+                            }
+                        }
+                        if (id >= 1 && id <= 39999)
+                        {
+                            summary += (it.Pet.Price.Value * it.Quantity);
+                            <tr>
+                                <td>
+                                    @Html.ActionLink("x", "Delete", "ShoppingCart", new
+                               {
+                                   id = it.Pet.Pet_Id
+                               }, new { @class = "btn btn-danger" })
+                                </td>
+                                <td><img src=@Url.Content("~/Content/images/images_pet/" + @it.Pet.Images) style="width: 300px; height: 250px;" /></td>
+                                <td> @it.Pet.Name </td>
+                                <td> @it.Quantity </td>
+                                
+                                <td>@(it.Pet.Price * it.Quantity) </td>
+                            </tr>
+                        }
+                        else if (id >= 40000 && id < 99500)
+                        {
+                            summary += (it.Product.Price.Value * it.QuantityProduct);
+                            <tr>
+                                <td>
+                                    @Html.ActionLink("x", "Delete", "ShoppingCart", new
+                               {
+                                   id = it.Product.Product_Id
+                               }, new { @class = "btn btn-danger" })
+                                </td>
+                                <td>
+                                    <img src=@Url.Content("~/Content/images/images_product/" + @it.Product.Images) style="width: 300px; height: 250px;" />
+                                </td>
+                                <td> @it.Product.Name </td>
+                                <td> @it.QuantityProduct </td>
+                                <td>@(it.Product.Price * it.QuantityProduct) </td>
+                            </tr>
+                        }
+                        else if (id >= 99500 && id < 110000)
+                        {
+                            summary += (it.Trainer.Price.Value * it.QuantityTrainer) + 0;
+                            <tr>
+                                <td>
+                                    @Html.ActionLink("x", "Delete", "ShoppingCart", new
+                               {
+                                   id = it.Trainer.Trainer_Id
+                               }, new { @class = "btn btn-danger" })
+                                </td>
+                                <td>
+                                    <img src=@Url.Content("~/Content/images/images_trainer/" + @it.Trainer.Images) style="width: 300px; height: 250px;" />
+                                </td>
+                                <td> @it.Trainer.Name </td>
+
+                                <td> @it.QuantityTrainer  </td>
+                    
+                                <td>@(it.Trainer.Price * it.QuantityTrainer) </td>
+                            </tr>
+                        }else
+                        {
+
+                        }
+                        Quantity = Quantity + (it.Quantity) + 0;
+                    }
+            </table>
+            </tbody>
+            </table>
+
+            <br />
+        </div>
+
+
+        <div class="col-md-4">
+
+            <div class="card text-white bg-warning mb-3" style="width:450px">
+                <div class="card-body">
+                    <table align="center">
+                        <br />
+
+                        <tr>
+                            <td>
+
+                                <div>
+                                    @using (Html.BeginForm("Save_Order", "ShoppingCart", FormMethod.Post))
+                                    {
+
+                                        <div class="alert alert-dismissible alert-dark" style="width:400px; height:50px;" align="left">
+                                            โปรดเลือกวิธีชำระเงิน
+                                        </div>
+
+                                        @Html.DropDownList("Pay", new List<SelectListItem>
+                                        {
+                                        new SelectListItem { Text = "ชำระเงินปลายทาง" , Value = "30" , Selected = false},
+                                        new SelectListItem { Text = "ชำระเงินผ่านบัตรเครดิต/เดบิต" , Value = "40" },
+                                        }, "เลือกวิธีชำระเงิน", new { @class = "form-control" })
+
+                                        <br />
+                                        <div class="alert alert-dismissible alert-dark" style="width:400px; height:50px;" align="left">
+                                            โปรดเลือกวิธีจัดส่ง
+                                        </div>
+                                        <div>
+                                            @Html.DropDownList("Delivery", new List<SelectListItem>
+                                        {
+                                        new SelectListItem { Text = "นัดรับกับผู้ซื้อด้วยตนเอง" , Value = "1" , Selected = false},
+                                        new SelectListItem { Text = "ส่งภายในภูมิภาคกลาง ราคา 2500 บาท" , Value = "2" },
+                                        new SelectListItem { Text = "ส่งภายในภูมิภาคใต้ ราคา 3000" , Value = "3" },
+                                        new SelectListItem { Text = "ส่งภายในภูมิภาคตะวันตก ราคา 2000" , Value = "4" },
+                                        new SelectListItem { Text = "ส่งภายในภูมิภาคตะวันออก ราคา 2000" , Value = "5" },
+                                        new SelectListItem { Text = "ส่งภายในภูมิภาคอีสาน ราคา 3500" , Value = "6" },
+                                        new SelectListItem { Text = "ส่งระหว่างภาค ราคา 6000" , Value = "7" },
+                                        }, "เลือกวิธีจัดส่ง", new { @class = "form-control" })
+                                        </div>
+                                        <br /><br /><br />
+                                        <h5 class="card-title" align="left">ยอดรวม @Quantity (ชิ้น)   @summary บาท</h5>
+                                        <div><input type="submit" value="ดำเนินการชำระเงิน" class="btn btn-danger pullright" style="width:400px;height:45px" /></div>
+                                    }
+                                </div>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        @Html.ActionLink("เลือกสินค้าต่อ", "Pet", "Sell", null, new { @class = "btn btn-info" })
+    </div>
+
+    @{
+        Session["Sum"] = summary;
+        Session["Quantity"] = Quantity;
+    }
+
+</body>

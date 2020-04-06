@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Admin2";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/bootstrap-Minty.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body style="background-color:#FFE57E;" align="center">
+    <br /><br /><br />
+
+
+    <div class="col-6">
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop4" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="width:200px;height:38px">
+                รายงาน
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop4">
+                <a>@Html.ActionLink("ร้านที่มียอดขายมากที่สุดประจำเดือน", "#", "#", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                <a>@Html.ActionLink("ร้านที่มียอดขายน้อยที่สุดประจำเดือน", "#", "#", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                <a>@Html.ActionLink("รางานการเข้าใช้งานเว็บไซต์", "#", "#", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                <a>@Html.ActionLink("รายงานซื้อขายสัตว์เลี้ยง", "#", "#", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="alert alert-dismissible alert-warning text-dark" style="height: 600px;">
+        <div class="row">
+            <div class="col-md-5">
+                <b>ร้านค้าที่มียอดขายมากที่สุด 5 อันดับ</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ประจำเดือน
+            </div>
+            <div class="col">
+                <select id="inputState" class="form-control" style="width: 150px;">
+                    <option selected>มกราคม</option>
+                    <option>กุมภาพันธ์</option>
+                    <option>มีนาคม</option>
+                    <option>เมษายน</option>
+                    <option>พฤษภาคม</option>
+                    <option>มิถุนายน</option>
+                    <option>กรกฏาคม</option>
+                    <option>สิงหาคม</option>
+                    <option>กันยายน</option>
+                    <option>ตุลาคม</option>
+                    <option>พฤศจิกายน</option>
+                    <option>ธันวาคม</option>
+
+                </select>
+            </div>
+            ปี <div class="col-md-4">
+                <select id="inputState" class="form-control" style="width: 150px;">
+                    <option selected>2559</option>
+                    <option>2561</option>
+                    <option>2562</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <br /><br /><br /><br /><br />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
+

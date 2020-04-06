@@ -1,0 +1,84 @@
+﻿@using FinalProjectPetey.Models
+@{
+    ViewBag.Title = "Listmyshoporder";
+}
+
+<h2>Listmyshoporder</h2>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/content/Index.css">
+    @Styles.Render("~/Content/style.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-3 bg-primary disabled">
+            <br /><br />
+           
+        </div>
+
+
+
+        <div class="col-md-9 bg-light disabled">
+            <br />
+            <h3>รายการสินค้า</h3>
+            <br />
+            <div class="row">
+                @foreach (Pet p in ViewBag.petlist)
+                {
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card mh-100">
+                            <img class="card-img-top" src=@Url.Content("~/Content/images/images_pet/" + @p.Images) width="700px;" height="250px;">
+                            <div class="card-body">
+                                <h4 class="card-title">
+
+                                    <a>@Html.ActionLink(@p.Gene, "ViewDetails", "ShoppingCart", new { id = p.Pet_Id }, new { @class = "link" })</a>
+                                </h4>
+                                <h5>@Convert.ToInt32(p.Price) ฿</h5>
+                                <p class="card-text">@p.History.Substring(0, 90)...</p>
+                                @Html.ActionLink("แก้ไขข้อมูล", "Edit", "DataSell", new { id = p.Pet_Id }, new { @class = "btn btn-warning", style = "width:180px;height:38px" })
+                            </div>
+                        </div>
+                    </div>
+                }
+                @foreach (Product p in ViewBag.productlist)
+                {
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card mh-100">
+                            <img class="card-img-top" src=@Url.Content("~/Content/images/images_product/"+@p.Images) width="700px;" height="250px;">
+                            <div class="card-body">
+                                <h4 class="card-title">
+
+                                    <a>@Html.ActionLink(@p.Name, "ViewDetails", "ShoppingCart", new { id = p.Product_Id }, new { @class = "link" })</a>
+                                </h4>
+                                <h5>@Convert.ToInt32(p.Price) ฿</h5>
+                                <p class="card-text">@p.Detalis.Substring(0, 30)...</p>
+                                @Html.ActionLink("แก้ไขข้อมูล", "EditProduct", "DataSell", new { id = p.Product_Id }, new { @class = "btn btn-warning", style = "width:180px;height:38px" })
+                            </div>
+                        </div>
+                    </div>
+                }
+                @foreach (Trainer p in ViewBag.trainerlist)
+                {
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card mh-100">
+                            <img class="card-img-top" src=@Url.Content("~/Content/images/images_trainer/" + @p.Images) width="700px;" height="250px;">
+                            <div class="card-body">
+                                <h4 class="card-title">
+
+                                    <a>@Html.ActionLink(@p.Name, "ViewDetails", "ShoppingCart", new { id = p.Trainer_Id }, new { @class = "link" })</a>
+                                </h4>
+                                <h5>@Convert.ToInt32(p.Price) ฿</h5>
+                                <p class="card-text">@p.Details.Substring(0, 50)...</p>
+                                @Html.ActionLink("แก้ไขข้อมูล", "EditTrainer", "DataSell", new { id = p.Trainer_Id }, new { @class = "btn btn-warning", style = "width:180px;height:38px" })
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,115 @@
+﻿@using FinalProjectPetey.Models;
+@{
+    ViewBag.Title = "User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var cd = (customer)ViewData["ShowDataUser"];
+}
+<br /><br /><br /><br />
+<div class="row">
+    <div class="col-6">
+        <div class="alert alert-dismissible alert-warning text-dark">
+            <br />
+            <div class="row">
+                <br />
+                <div class="col-2">
+                    &nbsp;&nbsp;<img src="https://img.icons8.com/ios-glyphs/90/000000/user-male.png" style="width: 90px">
+                </div>
+                <div class="col-6">
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop4" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false" style="width:200px;height:38px">
+                            ข้อมูลผู้ใช้งานและร้านค้า
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2" style="border-color:chocolate">
+                            <a>@Html.ActionLink("ผู้ใช้งานทั้งหมด", "User", "Admin", new { id = Session["UserID"] }, new { @class = "dropdown-item", style = "color:#ff0000" })</a>
+                            <a>@Html.ActionLink("ร้านค้า", "Shop", "Admin", new { id = Session["UserID"] }, new { @class = "dropdown-item", style = "color:#ff0000" })</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br /><br />
+            <table class="table table-striped text-dark">
+                <tbody>
+                    <tr>
+                        <th scope="row">ชื่อผู้ใช้งาน</th>
+                        <td>สถานะ</td>
+                        <td> </td>
+                    </tr>
+                    @foreach (customer su in ViewBag.listProduct)
+                    {
+                        <tr>
+                            <th scope="row">"@su.Username"</th>
+                            <td>ออนไลน์</td>
+                            <td> @Html.ActionLink("ข้อมูล", "ShowDataUser", "Admin", new { id = su.Customer_Id }, new { @class = "btn btn-success " }) </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @if (Session["ShowDataUser"] == "1")
+    {
+        <div class="col-6">
+            @using (Html.BeginForm("UpdateUserdata", "Admin", new { id = cd.Customer_Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="alert alert-dismissible alert-warning text-dark">
+                    <br />
+                    <h6 class="alert-heading"><img src="~/Content/images/data.png" style="width: 40px"> &nbsp;ข้อมูล</h6>
+                    <br /><br />
+                    <table>
+                        <tr>
+                            <td>
+                                <small for="staticEmail" class="col-sm-2 col-form-label">E-mail</small>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="Email" name="Email" value="@cd.E_mail">
+                                </div>
+                            </td>
+                            <td>
+                                <small for="staticEmail" class="col-sm-2 col-form-label">ชื่อผู้ใช้งาน</small>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="Username" name="Username" value="@cd.Username">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br />
+                                <small for="staticEmail" class="col-sm-2 col-form-label">ชื่อ-สกุล</small>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="Fullname" name="Fullname" value="@cd.Fullname">
+                                </div>
+                            </td>
+                            <td>
+                                <br />
+                                <small for="staticEmail" class="col-sm-2 col-form-label">เบอร์โทรศัพท์</small>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="Tel" name="Tel" value="@cd.Phone_No">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                    <small for="staticEmail" class="col-sm-2 col-form-label" style="height: 100px;">ที่อยู่</small>
+                    <div class="col-sm-12">
+                        <textarea type="textarea" class="form-control" id="Address" name="Address">@cd.Address</textarea>
+                    </div>
+                    <center>
+                        <br /><br /><br />
+                        <button class="btn btn-success my-5 my-sm-0" type="submit" style="width:120px;height:38px" onclick="return confirm ('Are you sure want to delete blog?')">
+                            อัพเดท
+                        </button>
+                        <br />
+                    </center>
+                </div>
+            }
+
+        </div>
+    }
+</div>
+
+
+

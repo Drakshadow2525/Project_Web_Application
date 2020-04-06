@@ -1,0 +1,35 @@
+﻿@using FinalProjectPetey.Models;
+@using FinalProjectPetey.Controllers;
+@{
+    ViewBag.Title = "Confirm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/content/Index.css">
+    @Styles.Render("~/Content/style.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<center>
+    <h1>Order Confirmation</h1> <br />
+
+    <h2>การสั่งซื้อเสร็จสิ้น</h2> <br />
+    <p>
+
+
+        <div class="about_img">
+            <img class="img-fluid" src="~/Content/images/logo23(1).png" style="height: 300px;">
+        </div>
+
+        รายการสั่งซื้อของคุณได้ถูกเข้าไปในระบบแล้ว <br />
+        ขอบคุณที่ใช้บริการ หากต้องการติดต่อเรา โทร. 080-043-6679 หรือ Email: Janjan_5653@hotmail.com
+
+    </p>
+
+    @Html.ActionLink("Back to Home", "Index", "Home", null, new { @class = "btn btn-info" })
+
+</center>
+
+
+

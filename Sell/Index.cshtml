@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "Index";
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Petey</title>
+    @Styles.Render("~/Content/style.css")
+    @Scripts.Render("~/bundles/modernizr")
+    <title>IndexPet</title>
+</head>
+<body>
+    <section id="team" class="wow fadeInUp">
+        <div class="row">
+            <div class="col-md-3 bg-primary disabled">
+                <br /><br />
+                <div class="dropdown" align="center">
+                    <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" style="width:180px;height:38px" data-hover="dropdown">
+                        <a align="right">สัตว์เลี้ยง</a>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">หมา</a>
+                        <a class="dropdown-item" href="#">แมว</a>
+                        <a class="dropdown-item" href="#">นก</a>
+                        <a class="dropdown-item" href="#">กระต่าย</a>
+                        <a class="dropdown-item" href="#">หนู</a>
+                        <a class="dropdown-item" href="#">งู</a>
+                    </div>
+
+                </div>
+                <br /><br /><br />
+                <div class="dropdown" align="center">
+                    <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" style="width:180px;height:38px" data-hover="dropdown">
+                        อาหาร/อุปกรณ์
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">ของเล่นสำหรับสัตว์เลี้ยง</a>
+                        <a class="dropdown-item" href="#">อาหาร</a>
+                        <a class="dropdown-item" href="#">อุปกรณ์ทำความสะอาดสัตว์เลี้ยง</a>
+                    </div>
+
+                </div>
+                <br /><br /><br />
+                <div class="dropdown" align="center">
+                    <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" style="width:180px;height:38px" data-hover="dropdown">
+                        คอร์สเทรนสัตว์เลี้ยง
+                    </button>
+
+                </div>
+            </div>
+
+
+            @using FinalProjectPetey.Models
+
+            <div class="col-md-9 bg-light disabled">
+                <br />
+                <h3>รายการสินค้า</h3>
+                <div class="row">
+                    @foreach (Pet p in ViewBag.listProduct)
+                    {
+
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card mh-100">
+                                <a href="#"><img class="card-img-top" src=@Url.Content("~/Content/images/" + @p.Images + ".jpg") width="700px;" height="250px;"></a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a>@Html.ActionLink(@p.Gene, "ViewDetails", "ShoppingCart", new { id = p.Pet_Id }, new { @class = "link" })</a>
+                                    </h4>
+                                    <h5>@p.Price ฿</h5>
+                                    <p class="card-text">@p.History</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                    @*@foreach (Product p in ViewBag.listProduct)
+            {
+
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card mh-100">
+                                <a href="#"><img class="card-img-top" src=@Url.Content("~/Content/images/" + @p.Images + ".jpg") width="700px;" height="250px;"></a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a>@Html.ActionLink(@p.Name, "ViewDetails", "ShoppingCart", new { id = p.Product_Id }, new { @class = "link" })</a>
+                                    </h4>
+                                    <h5>@p.Price ฿</h5>
+                                    <p class="card-text">@p.Pro_date</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                    @foreach (Trainer p in ViewBag.listProduct)
+            {
+
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card mh-100">
+                                <a href="#"><img class="card-img-top" src=@Url.Content("~/Content/images/" + @p.Images + ".jpg") width="700px;" height="250px;"></a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a>@Html.ActionLink(@p.Name, "ViewDetails", "ShoppingCart", new { id = p.Trainer_Id }, new { @class = "link" })</a>
+                                    </h4>
+                                    <h5>@p.Price ฿</h5>
+                                    <p class="card-text">@p.Details</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    }*@
+
+                </div>
+            </div>
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
+
+
+
+

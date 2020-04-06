@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+@{
+    ViewBag.Title = "Condition";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/bootstrap-Minty.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body style="background-color:#FFE57E;" align="center">
+    <br /><br /><br />
+    <div>
+        <center>
+            <div class="alert alert-dismissible alert-light text-dark" style="height: 300px; width: 670px;">
+                <center>
+                    <br /><br /><br />
+                    <h6>ลงทะเบียนขายสินค้า หรือขายสัตว์เลี้ยงตอนนี้</h6>
+                    <br />var cus2 = (customer)Session["UserID"];
+                    &nbsp; &nbsp; &nbsp;
+                    @Html.ActionLink("ลงทะเบียนขายสินค้า", "Rsellproduct", "Account",null, new { @class = "btn btn-success width:50px; height: 170px" })&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    @Html.ActionLink("เข้าสู่เว็บไซต์", "Index", "Home", null, new { @class = "btn btn-warning width:50px; height: 170px" })
+                </center>
+
+            </div>
+        </center>
+
+    </div>
+</body>
+</html>
+
+
+

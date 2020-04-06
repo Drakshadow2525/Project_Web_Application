@@ -1,0 +1,56 @@
+﻿@using FinalProjectPetey.Models;
+@{
+    ViewBag.Title = "SumCargo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Petey</title>
+    @Styles.Render("~/Content/bootstrap-Minty.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<h2>SumCargo</h2>
+    <center>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Choose all &nsub;&nsub; <input type="checkbox" name="css_all_check" id="css_all_check" /></th>
+                <th>Add</th>
+            </tr>
+            @foreach (Pet su in ViewBag.listProduct)
+            {
+                <tr>
+                    <td>@su.Pet_Id;</td>
+                    <td>@su.Name;</td>
+                    <td>@su.Price</td>
+                    <td>
+                        <center>
+                            <input name="data_item1" type="checkbox" class="css_data_item" id="data_item1" value="@su.Pet_Id" />
+                        </center>
+                    </td>
+                    <td>@Html.ActionLink("Sumcargo", "SumCargoa", "Admin", new { id = su.Pet_Id }, new { @class = "link" })</td>
+                </tr>
+            }
+        </table>
+        <input type="submit" value="filter" />
+</center>
+
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+            <script type="text/javascript">
+
+        $(function(){
+              $("#css_all_check").click(function(){ // เมื่อคลิกที่ checkbox ตัวควบคุม
+                  if($(this).prop("checked")){ // ตรวจสอบค่า ว่ามีการคลิกเลือก
+                      $(".css_data_item").prop("checked",true); // กำหนดให้ เลือก checkbox ที่ต้องการ ที่มี class ตามกำหนด
+                  }else{ // ถ้าไม่มีการ ยกเลิกการเลือก
+                      $(".css_data_item").prop("checked",false); // กำหนดให้ ยกเลิกการเลือก checkbox ที่ต้องการ ที่มี class ตามกำหนด
+                  }
+              });
+        });
+</script>  
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

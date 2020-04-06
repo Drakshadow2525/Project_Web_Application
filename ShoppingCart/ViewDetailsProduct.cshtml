@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+@{
+    ViewBag.Title = "ViewDetailsProduct";
+}
+@using FinalProjectPetey.Models;
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Webkuy</title>
+    @Styles.Render("~/Content/style.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <br /><br />
+    @{
+        var pe2 = (Product)ViewData["ProDetails"];
+    }
+
+    <div class="row">
+        <div class="col">
+            <img style="height: 300px; width: 100%; display: block;" src="~/Content/images/images_product/@pe2.Images" class="card-img-top" alt="...">
+        </div>
+        <div class="col">
+            <div class="card-body">
+                <h5 class="card-title">ชื่อสินค้า : @pe2.Name</h5><br />
+                <h6 class="card-subtitle mb-2 text-muted">ยี่ห้อ : @pe2.Brand</h6><br />
+                <h6 class="card-subtitle mb-2 text-muted">วันหมดอายุ : @Convert.ToString(pe2.Exp_date).Substring(0,10)</h6><br />
+                <h6 class="card-subtitle mb-2 text-muted">ราคา : @Convert.ToInt32(pe2.Price) ฿</h6>
+                <p class="card-text"></p>
+                @Html.ActionLink("+ใส่ตระกร้า", "AddtoCart", "ShoppingCart", new { id = pe2.Product_Id, id2 = Session["UserID"] }, new { @class = "btn btn-info " })
+                @Html.ActionLink("สั่งซื้อ", "Buy", "ShoppingCart", new { id = pe2.Product_Id, id2 = Session["UserID"] }, new { @class = "btn btn-info " })
+            </div>
+        </div>
+        <div class="col">
+            <div class="card-body">
+                <h5 class="card-title">ข้อมูล : @pe2.Brand</h5>
+                <p class="card-text">@pe2.Detalis</p>
+            </div>
+        </div>
+    </div>
+
+    <br /><br />
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><a>@Html.ActionLink(pe2.Name, "Shop", "Sell", new { id = pe2.Customer_id }, new { @class = "link" })</a></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <button type="button" class="btn btn-secondary">+ พูดคุย</button>
+                    <button type="button" class="btn btn-secondary">จำนวนครั้งที่ซื้อ/ขาย</button>
+                    <button type="button" class="btn btn-secondary">Link</button>
+                    <button type="button" class="btn btn-secondary">Link</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            @using (Html.BeginForm("Comment", "ShoppingCart", new { id = pe2.Product_Id }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">ความคิดเห็นเกี่ยวกับสินค้านี้ :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="comment">Comment:</label>
+                                <textarea class="form-control" rows="5" id="comment"></textarea>
+                            </div>
+                            <label for="exampleTextarea">ความคิดเห็นเกี่ยวกับสินค้านี้</label>
+                            <textarea class="form-control" id="exampleTextarea" rows="3" cols="50" name="comment"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success">ยืนยัน</button>
+                            <button type="reset" class="btn btn-danger">ยกเลิก</button>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+
+    </div>
+</body>
+</html>
+
+
+

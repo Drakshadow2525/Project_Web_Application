@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+@{
+    ViewBag.Title = "Addpic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/Mintyb.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="background-color:#FFE57E;" align="center">
+    <br /><br /><br />
+    <div>
+        <center>
+            <div class="alert alert-dismissible alert-light" style="height: 300px; width: 670px;">
+                <center>
+                    <br /><br /><br /><br /><br />
+                    &nbsp;&nbsp;&nbsp;@Html.ActionLink("เพิ่มรูปภาพ", "Updatepic", "DataSell", new { id = Session["id"]}, new { @class = "btn btn-success", style = "width:170px; height:50px" })&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @Html.ActionLink("กลับสู่หน้าร้าน", "Shop", "Sell", new { id = Session["UserID"] }, new { @class = "btn btn-warning",style = "height: 50px; width: 170px;" })
+                </center>
+            </div>
+        </center>
+
+    </div>
+</body>
+</html>
+
+

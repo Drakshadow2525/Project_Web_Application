@@ -1,0 +1,109 @@
+﻿@using FinalProjectPetey.Models
+@model LoginViewModel
+
+@{
+
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Petey</title>
+@Styles.Render("~/Content/style.css")
+@Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <br /><br /><br /><br />
+    <center>       
+            @if (Session["CheckLogin"] == "1")
+            {
+
+                <script type="text/javascript">
+                            alert("ไม่พบชื่อผู้ใช้งาน โปรดตรวจสอบใหม่อีกครั้ง");
+
+                </script>
+            }       
+        @if (Session["CheckAlert"] == "1")
+        {
+            Session["CheckAlert"] = "0";
+            <script type="text/javascript">
+                        alert("กรุณาเข้าสู่ระบบก่อนทำรายการสั่งซื้อ");
+
+            </script>
+
+        }
+            <br />
+            <div class="about_img">
+                <img class="img-fluid" src="~/Content/images/logo23(1).png" style="height: 300px;">
+            </div>
+            <div class="container btn btn-light" style="width:530px; height:auto;">
+
+                <div class="row">
+                    <center>
+                        <div class="col-md-8">
+                            <section id="loginForm">
+                                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            @Html.LabelFor(m => m.Username, "ชื่อผู้ใช้งาน", new { @class = "form-control-label" })
+                                        </div>
+
+                                        <div class="col-md-10">
+                                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control", style = "width:350px;", id = "inputPassword", placeholder = "Username" })
+                                            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            @Html.LabelFor(m => m.Password, "รหัสผ่าน", new { @class = "Form-control-label" })
+                                        </div>
+                                        <div class="col-md-10">
+                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", id = "inputPassword", placeholder = "Password", style = "width:350px;" })
+                                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+
+                                    <div class="w3-container" align="right">
+                                        <label><a href="~/Account/resetpassword1">ลืมรหัสผ่าน?</a></label>
+                                    </div>
+
+                                    <div class="row btn btn" align="center">
+                                        <form class="form-inline my-5 my-lg-0">
+                                            <button class="btn btn-dark my-5 my-sm-0" type="submit" style="width:120px;height:38px">
+                                                เข้าสู่ระบบ
+                                            </button>
+                                            &nbsp;&nbsp;
+                                            <button class="btn btn-dark my-5 my-sm-0" type="submit" style="width:120px;height:38px">
+                                                สมัครสมาชิก
+                                            </button>
+                                        </form>
+                                    </div>
+                                }
+                            </section>
+                            <br />
+                        </div>
+                    </center>
+                    @*<div class="col-md-4">
+                        <section id="socialLoginForm">
+                            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                        </section>
+                    </div>*@
+                </div>
+
+            </div>
+</center>
+</body>
+</html>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

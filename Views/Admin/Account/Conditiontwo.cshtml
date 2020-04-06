@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+@{
+    ViewBag.Title = "Conditiontwo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/bootstrap-Minty.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body style="background-color:#FFE57E;" align="center">
+    <br /><br /><br />
+
+    <div>
+        <center>
+            <div class="alert alert-dismissible alert-light" style="height: 300px; width: 670px;">
+                <center>
+                    <br /><br /><br /><br /><br />
+                    &nbsp;
+                    @*@Html.ActionLink("เข้าสู่ระบบ", "Login", "Account", null, new { @class = "btn btn-success" , style = "height: 50px; width: 170px;" })*@
+                    @*&nbsp;&nbsp;&nbsp;*@
+                    @Html.ActionLink("เข้าสู่ระบบ", "Login", "Account", null, new { @class = "btn btn-success", style = "height: auto; width: 150px;" })
+                    @*<button type="button" class="btn btn-success" style="height: 50px; width: 170px;">เข้าสู่ระบบ</button>*@@*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*@
+                    @*<button type="button" class="btn btn-warning" style="height: 50px; width: 170px;">ขายอุปกรณ์สัตว์เลี้ยง</button>*@
+                </center>
+
+            </div>
+        </center>
+
+    </div>
+</body>
+</html>
+
+
+

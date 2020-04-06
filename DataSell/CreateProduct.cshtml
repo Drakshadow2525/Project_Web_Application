@@ -1,0 +1,115 @@
+﻿
+@model FinalProjectPetey.Models.Product
+
+@{
+    ViewBag.Title = "CreateProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreatePic1</h2>
+
+<body style="background-color:#FFE57E;">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <br /><br /><br /><br />
+    @using (Html.BeginForm("CreaterProduct", "DataSell", new { id = Session["UserID"] }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="container">
+            <center> <h2>CreateProduct</h2> </center>
+            <hr />
+            <div class="row">
+                <div class="col">
+                    @Html.LabelFor(model => model.Name, "ชื่อ", htmlAttributes: new { @class = "control-label col-md-10" })
+                    <div class="col">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.Price, "ราคา", htmlAttributes: new { @class = "control-label col-md-10" })
+                    <div class="col">
+                        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.LabelFor(model => model.Brand, "แบรนด์", htmlAttributes: new { @class = "control-label col-md-10", @placeholder = "ใส่ชื่อแบรนด์" })
+                    <div class="col">
+                        @Html.EditorFor(model => model.Brand, new { htmlAttributes = new { @class = "form-control", @type = "text-danger" } })
+                        @Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.Pro_date, "วันผลิตสินค้า", htmlAttributes: new { @class = "control-label col-md-10" })
+                    <div class="col">
+                        @Html.EditorFor(model => model.Pro_date, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        @Html.ValidationMessageFor(model => model.Pro_date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.Typess, "ชนิด", htmlAttributes: new { @class = "control-label col-md-10" })
+
+                        <div class="col">
+                            @Html.DropDownList("Type", new List<SelectListItem>
+                       {
+                           new SelectListItem { Text = "อาหารสัตว์" , Value = "อาหาร" , Selected = true},
+                           new SelectListItem { Text = "อุปกรณ์" , Value = "อุปกรณ์" },
+                           new SelectListItem { Text = "ของเล่น" , Value = "ของเล่น" }
+                       }, "Select", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Typess, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.Exp_date, "วันหมดอายุ", htmlAttributes: new { @class = "control-label col-md-10" })
+                    <div class="col">
+                        @Html.EditorFor(model => model.Exp_date, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        @Html.ValidationMessageFor(model => model.Exp_date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.LabelFor(model => model.Images, "รูปภาพ", htmlAttributes: new { @class = "control-label col-md-10" })
+                    <script type="text/javascript">
+                    function showImagePreview(input) {
+                        if (input.files && input.files[0]) {
+                            var filerdr = new FileReader();
+                            filerdr.onload = function (e) {
+                                $('#imgPreview').attr('src', e.target.result);
+                            }
+                            filerdr.readAsDataURL(input.files[0]);
+                        }
+                    }
+                    </script>
+                    <div class="card" style="width: 18rem; height: 18rem;">
+                        <img id="imgPreview" class="card-img-top" style="width: 18rem;  height: 18rem;">
+                    </div>
+                    <label for="exampleFormControlFile1">อัพโหลดไฟล์</label><br />
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1" onchange="showImagePreview(this)" name="file" />
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.Detalis, "รายละเอียดสินค้า", htmlAttributes: new { @class = "control-label col-md-10" })
+                    <div class="col">
+                        @Html.TextAreaFor(model => model.Detalis, 10, 60, new { htmlAttributes = new { @class = "form-control", @placeholder = "รายละเอียดสินค้า" } })
+                        @Html.ValidationMessageFor(model => model.Detalis, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div><br /><br /><br />
+            <div class="row justify-content-center">
+                <div class="col-md-auto">
+                    <button type="submit" class="btn btn-outline-success">Create</button>
+                </div>
+                <div class="col-md-auto">
+                    <button type="reset" class="btn btn-outline-danger">Cancle</button>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+

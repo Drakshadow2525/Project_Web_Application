@@ -1,0 +1,83 @@
+﻿@model FinalProjectPetey.Models.ViewModel
+@{
+    ViewBag.Title = "Confirm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var Opet = (Pet)ViewData["Opet"];
+    var Oproduct = (Product)ViewData["Oproduct"];
+    var Otrainer = (Trainer)ViewData["Otrainer"];
+}
+@using FinalProjectPetey.Models
+<br /><br />
+
+<head>
+    @Styles.Render("~/Content/Mintyb.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<br />
+<body>
+    <h4>ยืนยันการสั่งซื้อ</h4>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="alert alert-dismissible alert-warning text-dark">
+
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col">จำนวน</th>
+                            <th scope="col">ราคา</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+
+                    @foreach (ViewModel O in ViewBag.listOrders)
+                    {
+                        if (O.orders_details.Product_Id != null)
+                        {
+                        <tr>
+                        <td class="table-light">
+                            <img src="~/Content/images/a(1).jpg" style="width: 150px; height: 150px;" />
+                        </td>
+                        <td class="table-light">
+                             <h6>@O.orders_details.Order_Details_Id</h6>
+                        </td>
+                        <td class="table-light">
+                            <button type="button" class="btn btn-outline-danger"></button>
+                        </td>
+                        <td class="table-light">
+                            <h6></h6>
+                        </td>
+                        <td class="table-light">
+                            <button type="button" class="btn btn-warning disabled">ยกเลิกการสั่งซื้อ</button>
+                        </td>
+                        </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card text-dark bg-light mb-5" style="width:350px; height:auto;">
+                <div class="card-body">
+
+                    <strong>ที่อยู่การจัดส่ง</strong>
+                    <br /><br />
+                    ที่อยู่ XXXXXXXXXX XXXXXXXX
+                    <br /><br /><br /><br /><br />
+                    <br /><br /><br /><br />
+                    <br /><br /><br /><br />
+                    <br /><br /><br /><br />
+                    <button type="button" class="btn btn-danger btn-lg btn-block">เลือกซื้อสินค้าต่อ</button>
+                    <button type="button" class="btn btn-danger btn-lg btn-block">กลับไปหน้าแรก</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>

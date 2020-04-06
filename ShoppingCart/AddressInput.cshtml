@@ -1,0 +1,166 @@
+﻿
+@{
+    ViewBag.Title = "AddressInput";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "SendAddress";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@{
+    int s1 = Convert.ToInt32(Session["price_send"]);
+    int s2 = Convert.ToInt32(Session["Sum"]);
+    int sum = s1 + s2;
+    Session["Grand_Total"] = sum;
+}
+<br /><br />
+
+<head>
+    @Styles.Render("~/Content/Mintyb.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<br />
+<body>
+    @using (Html.BeginForm("Save_Order2", "ShoppingCart", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-md-9">
+                <div class="alert alert-dismissible alert-warning text-dark">
+                    <h3 class="alert-heading">
+                        กรอกที่อยู่การจัดส่ง
+                    </h3>
+                    <br />
+
+                    <div class="form-group row">
+                        <small class="col-sm-2 col-form-label">ชื่อ-นามสกุล</small>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="ชื่อ-นามสกุล" id="Name" name="Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <h6 class="col-sm-2 col-form-label">ที่อยู่</h6>
+                        <div class="col-sm-10">
+                            <textarea type="textarea" class="form-control" placeholder="ที่อยู่" id="Address" name="Address" style="width:590px;height:100px"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">โทรศัพท์</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="โทรศัพท์" id="Tel" name="Tel">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <small class="col-sm-2 col-form-label">อีเมลล์</small>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="อีเมลล์" id="Email" name="Email">
+                        </div>
+                    </div>
+
+                </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3855.991089482408!2d102.01850751424153!3d14.881776674115205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311eada1f2cc53f1%3A0x10533e4b3f07a09f!2z4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LmA4LiX4LiE4LmC4LiZ4LmC4Lil4Lii4Li14Liq4Li44Lij4LiZ4Liy4Lij4Li1!5e0!3m2!1sth!2sth!4v1567927081302!5m2!1sth!2sth" width="100%" height="300px;" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card text-dark bg-light mb-5" style="width:350px; height:450px;">
+                    @if (Session["Checkdiv"] != "1")
+                    {
+                    <div class="card-body">
+                        <strong>ชำระผ่านบัตรเคดิต/เดบิต</strong>
+
+                        <div class="form-group row">
+                            <small class="col-sm-5 col-form-label">*ประเภทบัตร</small>
+                            @Html.DropDownList("TypeCreditCard", new List<SelectListItem>
+                                        {
+                                        new SelectListItem { Text = "VISA" , Value = "VISA" , Selected = false},
+                                        new SelectListItem { Text = "MASTER CARD" , Value = "MASTER CARD" },
+                                        new SelectListItem { Text = "AMERICAN EXPRESS" , Value = "AMERICAN EXPRESS" }
+                                        }, "เลือกประเภทบัตร", new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group row">
+                            <small class="col-sm-5 col-form-label">*หมายเลขบัตร</small>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" placeholder="หมายเลขบัตร" id="Card_No" name="Card_No">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <small class="col-sm-5 col-form-label">*ชื่อผู้ถือบัตร</small>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" placeholder="ชื่อผู้ถือบัตร" id="Card_Name" name="Card_Name">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <h6 class="col-sm-5 col-form-label">*วันหมดอายุ</h6>
+                            <small class="col-sm-6 col-form-label">*CVV</small>
+
+                            <div class="col-sm-2">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control" placeholder="วันหมดอายุ" id="inputDefault" style="width:150px; height:auto;">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" placeholder="CVV" id="inputDefault" style="width:100px; height:auto;">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                    <br /><br />
+                    <div class="card text-dark bg-light mb-5" style="width:350px; height:auto;">
+                        <div class="card-body">
+                            <strong>สรุปรายการสั่งซื้อ</strong>
+                            <br /><br />
+                            <table>
+                                <tr>
+                                    <td>
+                                        <h6>ยอดรวม(จำนวน @Session["Quantity"] ชิ้น)</h6>
+                                    </td>
+                                    <td>
+                                        <h6 align="right">฿@Session["Sum"]</h6>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <br /><br />
+                                        <h6 align="left">ค่าจัดส่ง</h6>
+                                    </td>
+                                    <td>
+                                        <br /><br />
+                                        <h6 align="right">฿@Session["price_send"]</h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h6 class="card-title" align="left">ยอดรวมทั้งสิ้น</h6>
+                                    </td>
+                                    <td>
+                                        <br /><br />
+                                        <h6 class="card-title" align="right">฿@Session["Grand_Total"]</h6>
+                                        <p align="right"> รวมภาษีมูลค่าเพิ่ม(ถ้ามี)</p>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <button type="Submit" class="btn btn-danger btn-lg btn-block">ดำเนินการชำระเงิน</button>
+
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    }
+</body>
+
+

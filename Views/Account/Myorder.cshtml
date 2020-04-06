@@ -1,0 +1,127 @@
+﻿@using FinalProjectPetey.Models
+@{
+    ViewBag.Title = "Myorder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int id = 0;
+}
+
+<h2>Myorder</h2>
+
+<body>
+    <h4>ยืนยันการสั่งซื้อ</h4>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="alert alert-dismissible alert-warning text-dark">
+
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">ชื่อ</th>
+                            <th scope="col">จำนวน</th>
+                            <th scope="col">ราคา</th>
+                        </tr>
+                    </thead>
+                    @foreach (var p in ViewBag.Myorder_order)
+                    {
+                        if (p.Pid != null || p.Prid != null || p.Tid != null)
+                        {
+                            if (p.Pid >= 1 && p.Pid <= 39999)
+                            {
+                                id = p.Pid;
+                            }
+                            else if (p.Prid >= 40000 && p.Prid <= 99500)
+                            {
+                                id = p.Prid;
+                            }
+                            else if (p.Tid >= 99501 && p.Tid <= 110000)
+                            {
+                                id = p.Tid;
+                            }
+                            else
+                            {
+
+                            }
+                        }
+                        if (id >= 1 && id <= 39999)
+                        {
+                            <tr>
+                                <td class="table-light">
+                                    <img src="~/Content/images/@p.Pimages" style="width: 150px; height: 150px;" />
+                                </td>
+                                <td class="table-light">
+                                    <h6>@p.Pname</h6>
+                                </td>
+                                <td class="table-light">
+                                    <button type="button" class="btn btn-outline-danger">1</button>
+                                </td>
+                                <td class="table-light">
+                                    <h6>@p.Pprice</h6>
+                                </td>
+                                <td class="table-light">
+                                    <button type="button" class="btn btn-warning disabled">ยกเลิกการสั่งซื้อ</button>
+                                </td>
+                            </tr>
+                        }
+                        else if (id >= 40000 && id < 99500)
+                        {
+                            <tr>
+                                <td class="table-light">
+                                    <img src="~/Content/images/@p.Prid" style="width: 150px; height: 150px;" />
+                                </td>
+                                <td class="table-light">
+                                    <h6>@p.Prname</h6>
+                                </td>
+                                <td class="table-light">
+                                    <button type="button" class="btn btn-outline-danger">1</button>
+                                </td>
+                                <td class="table-light">
+                                    <h6>@p.Prprice</h6>
+                                </td>
+                                <td class="table-light">
+                                    <button type="button" class="btn btn-warning disabled">ยกเลิกการสั่งซื้อ</button>
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td class="table-light">
+                                    <img src="~/Content/images/@p.Timages" style="width: 150px; height: 150px;" />
+                                </td>
+                                <td class="table-light">
+                                    <h6>@p.Tname</h6>
+                                </td>
+                                <td class="table-light">
+                                    <button type="button" class="btn btn-outline-danger">1</button>
+                                </td>
+                                <td class="table-light">
+                                    <h6>@p.Tprice</h6>
+                                </td>
+                                <td class="table-light">
+                                    <button type="button" class="btn btn-warning disabled">ยกเลิกการสั่งซื้อ</button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-dark bg-light mb-5" style="width:350px; height:auto;">
+                <div class="card-body">
+
+                    <strong>ที่อยู่การจัดส่ง</strong>
+                    <br /><br />
+                    ที่อยู่ XXXXXXXXXX XXXXXXXX
+                    <br /><br /><br />
+                    <button type="button" class="btn btn-danger btn-lg btn-block">เลือกซื้อสินค้าต่อ</button>
+                    <button type="button" class="btn btn-danger btn-lg btn-block">กลับไปหน้าแรก</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>

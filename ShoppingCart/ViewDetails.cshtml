@@ -1,0 +1,188 @@
+﻿
+<!DOCTYPE html>
+@{
+    ViewBag.Title = "ViewDetails";
+}
+@using FinalProjectPetey.Models;
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Webkuy</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/content/Index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+    @Styles.Render("~/Content/style.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <br /><br />
+    @{
+        var pe = (Pet)ViewData["AniDetails"];
+    }
+
+    <div class="row">
+        <div class="col">
+            <img style="height: 300px; width: 100%; display: block;" src="~/Content/images/images_pet/@pe.Images" class="card-img-top" alt="...">
+        </div>
+        <div class="col">
+            <div class="card-body">
+                <h5 class="card-title">ชื่อ : @pe.Name</h5><br />
+                <h6 class="card-subtitle mb-2 text-muted">พันธุ์ : @pe.Gene</h6><br />
+                <h6 class="card-subtitle mb-2 text-muted">วันเกิด : @Convert.ToString(pe.Birthdate).Substring(0,10)</h6><br />
+                <h6 class="card-subtitle mb-2 text-muted">ราคา : @Convert.ToInt32(pe.Price) ฿</h6>
+                <p class="card-text"></p>
+                    @Html.ActionLink("+ใส่ตระกร้า", "AddtoCart", "ShoppingCart", new { id = pe.Pet_Id , id2 = Session["UserID"] }, new { @class = "btn btn-info " @*, onclick = "return confirm('Are sure wants to delete?');"*@ })
+                    @Html.ActionLink("สั่งซื้อ", "Buy", "ShoppingCart", new { id = pe.Pet_Id , id2 = Session["UserID"] }, new { @class = "btn btn-info " @*,onclick = "return confirm('Are sure wants to delete?');"*@})
+            </div>
+        </div>
+        <div class="col">
+            <div class="card-body">
+                <h5 class="card-title">ข้อมูล : @pe.Gene</h5>
+                <p class="card-text">@pe.History</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table>
+                <tr>
+                    <td>
+                        <img style="height: 200px; width: 200px; display: block;" src="~/Content/images/images_pet/@pe.Images2" alt="Card image">
+                    </td>
+                    <td>
+                        <img style="height: 200px; width: 200px; display: block;" src="~/Content/images/images_pet/@pe.Images3" alt="Card image"></td>
+                    <td>
+                        <img style="height: 200px; width: 200px; display: block;" src="~/Content/images/images_pet/@pe.Images4" alt="Card image"> </td>
+                    <td>
+                        <img style="height: 200px; width: 200px; display: block;" src="~/Content/images/images_pet/@pe.Images5" alt="Card image"> </td>
+                </tr>
+            </table>
+        </div>
+        </div>
+
+  
+    @*@{
+        string Name, Address, Email;
+        int Phone;
+        Name = Convert.ToString(Session["Name"]);
+        Phone = @Convert.ToInt32(Session["Phone"].ToString());
+        Email = @Convert.ToString(Session["Email"]);
+        Address = @Convert.ToString(Session["Address"]);
+    }*@
+    <br/><br/>
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="col-md-5">
+                        <h5><คะแนนร้านค้า</h5>>
+                            @*<h5>ชื่อร้านค้า:@Html.ActionLink(@Name, "Shop", "Sell", new { id = pe.Customer_id }, new { @class = "link" })</a></h5>
+                            <h6>เบอร์โทร: @Phone</h6>
+                            <h6>E-mail:  @Email</h6>
+                            <h6>ที่อยู่ :   @Address</h6>*@
+                            @{
+                                int star;
+                                if (Session["avg"] == null)
+                                {
+                                    <span class="fa fa-star fa-2x "></span>
+                                    <span class="fa fa-star fa-2x "></span>
+                                    <span class="fa fa-star fa-2x "></span>
+                                    <span class="fa fa-star fa-2x "></span>
+                                    <span class="fa fa-star fa-2x "></span>
+                                }
+                                else
+                                {
+                                    star = Convert.ToInt32(Session["avg"]);
+                                    if (star == 1)
+                                    {
+                                        <span class="fa fa-star fa-2x checked"></span>
+                                        <span class="fa fa-star fa-2x "></span>
+                                        <span class="fa fa-star fa-2x "></span>
+                                        <span class="fa fa-star fa-2x "></span>
+                                        <span class="fa fa-star fa-2x "></span>
+                                    }
+                                    else if (star == 2)
+                                    {
+                                        <span class="fa fa-star fa-2x checked"></span>
+                                        <span class="fa fa-star fa-2x checked"></span>
+                                        <span class="fa fa-star fa-2x "></span>
+                                        <span class="fa fa-star fa-2x "></span>
+                                        <span class="fa fa-star fa-2x "></span>
+                                    }
+                                    else if (star == 3)
+                                    {
+                                        <span class="fa fa-star fa-2x checked"></span>
+                                        <span class="fa fa-star fa-2x checked"></span>
+                                        <span class="fa fa-star fa-2x checked"></span>
+                                        <span class="fa fa-star fa-2x "></span>
+                                        <span class="fa fa-star fa-2x "></span>
+                                    }
+                                    else if (star == 4)
+                                    {
+                                        <span class="fa fa-star fa-2x checked"></span>
+                                        <span class="fa fa-star fa-2x checked"></span>
+                                        <span class="fa fa-star fa-2x checked"></span>
+                                        <span class="fa fa-star fa-2x checked"></span>
+                                        <span class="fa fa-star fa-2x "></span>
+
+                                    }
+                                    else if (star == 5)
+                                    {
+                                        <span class="fa fa-star fa-2x checked"></span>
+                                        <span class="fa fa-star fa-2x checked"></span>
+                                        <span class="fa fa-star fa-2x checked"></span>
+                                        <span class="fa fa-star fa-2x checked"></span>
+                                        <span class="fa fa-star fa-2x checked"></span>
+                                    }
+                                    else
+                                    {
+                                        <span class="fa fa-star fa-2x "></span>
+                                        <span class="fa fa-star fa-2x "></span>
+                                        <span class="fa fa-star fa-2x "></span>
+                                        <span class="fa fa-star fa-2x "></span>
+                                        <span class="fa fa-star fa-2x "></span>
+                                    }
+                                }
+
+                            }
+                        <br />
+                        @Html.ActionLink("ไปยังหน้าร้านค้า", "Shop", "Sell", new { id = pe.Customer_id }, new { @class = "link" })
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="col-6">
+
+                @using (Html.BeginForm("Comment", "ShoppingCart", new { id = pe.Pet_Id }, FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">ความคิดเห็นเกี่ยวกับสินค้านี้ :</h5>
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label for="comment">Comment:</label>
+                                    <textarea class="form-control" rows="5" id="comment2"></textarea>
+                                </div>
+                                <label for="exampleTextarea">ความคิดเห็นเกี่ยวกับสินค้านี้</label>
+                                <textarea class="form-control" id="comment" rows="3" cols="50" name="comment"></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">ยืนยัน</button>
+                                <button type="reset" class="btn btn-danger">ยกเลิก</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+</body>
+</html>
+

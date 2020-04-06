@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "Updatepic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <meta charset="utf-8">
+
+    <script type="text/javascript">
+     function showImagePreview(input) {
+          if (input.files && input.files[0]) {
+          var filerdr = new FileReader();
+          filerdr.onload = function (e) {
+             $('#imgPreview').attr('src', e.target.result);
+          }
+            filerdr.readAsDataURL(input.files[0]);
+            }
+        }
+        function showImagePreview2(input) {
+          if (input.files && input.files[0]) {
+          var filerdr = new FileReader();
+          filerdr.onload = function (e) {
+             $('#imgPreview2').attr('src', e.target.result);
+          }
+            filerdr.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function showImagePreview3(input) {
+            if (input.files && input.files[0]) {
+                var filerdr = new FileReader();
+                filerdr.onload = function (e) {
+                    $('#imgPreview3').attr('src', e.target.result);
+                }
+                filerdr.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function showImagePreview4(input) {
+            if (input.files && input.files[0]) {
+                var filerdr = new FileReader();
+                filerdr.onload = function (e) {
+                    $('#imgPreview4').attr('src', e.target.result);
+                }
+                filerdr.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+ 
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<center>
+    <h2>อัปเดพรูปภาพสัตว์เลี้ยง</h2>
+</center>
+
+<body style="background-color:#FFE57E;">
+    <center>
+        <div class="container">
+            <div class="row">
+                <br />
+                <div class="col-md-6">
+                    <br/>
+                    <div class="card" style="width: 18rem; height: 18rem;">
+                        <img id="imgPreview" class="card-img-top" style="width: 18rem;  height: 18rem;">
+                    </div>
+                    <label for="exampleFormControlFile1">อัพโหลดไฟล์</label><br />
+                    <input type="file" class="form-control-file" id="file" onchange="showImagePreview(this)" name="file"/>
+                </div>
+                <br />
+                <div class="col-md-6">
+                    <br/>
+                    <div class="card" style="width: 18rem;  height: 18rem;">
+                        <img id="imgPreview2" class="card-img-top" style="width: 18rem;  height: 18rem;">
+                    </div>
+                    <label for="exampleFormControlFile1">อัพโหลดไฟล์</label><br />
+                    <input type="file" class="form-control-file" id="file2" onchange="showImagePreview2(this)" name="file2"/>
+                </div>
+                <br />
+                <div class="col-md-6">
+                    <br/>
+                    <div class="card" style="width: 18rem;  height: 18rem;">
+                        <img id="imgPreview3" class="card-img-top" style="width: 18rem;  height: 18rem;">
+                    </div>
+                    <label for="exampleFormControlFile1">อัพโหลดไฟล์</label><br />
+                    <input type="file" class="form-control-file" id="file3" onchange="showImagePreview3(this)" name="file3"/>
+                </div>
+                <br />
+                <div class="col-md-6">
+                    <br/>
+                    <div class="card" style="width: 18rem;  height: 18rem;">
+                        <img id="imgPreview4" class="card-img-top" style="width: 18rem;  height: 18rem;">
+                    </div>
+                    <label for="exampleFormControlFile1">อัพโหลดไฟล์</label><br />
+                    <input type="file" class="form-control-file" id="file4" onchange="showImagePreview4(this)" name="file4"/>
+                </div>
+                <br>
+            </div>
+            <br/>
+        </div>
+        <button type="button" class="btn btn-success">เพิ่มสินค้า</button> &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-warning">ยกเลิก</button>
+    </center>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>

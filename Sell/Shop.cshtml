@@ -1,0 +1,157 @@
+﻿
+@using FinalProjectPetey.Models;
+@using FinalProjectPetey.Controllers;
+@{
+    ViewBag.Title = "Shop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="~/CSS/star.css">
+    <title>@ViewBag.Title - Petey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+    @Styles.Render("~/Content/style.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<h2>store</h2>
+<div class="row navbar-dark bg-warning ">
+    <img src="~/Content/images/indexWide1.jpg" class="img-fluid" alt="Responsive image" max-width 100%; height auto;>
+</div>
+@*<br /><br /><br /><br /><br />*@
+
+@{
+    var sh = (customer)ViewData["Shop"];
+}
+<br /><br />
+<div class="row">
+    <div class="col-md-2">
+        <img src="~/Content/images/images_Shop/@sh.Images" class="rounded-circle" style="width: 150px; height: 150px;">
+    </div>
+
+    <div class="col-md-5">
+        <div class="alert alert-dismissible alert-light" style="height: 250px;">
+            <h5>ชื่อร้านค้า: @sh.Fullname</h5>
+            <h6>เบอร์โทร: @sh.Phone_No</h6>
+            <h6>E-mail: @sh.E_mail</h6>
+            <h6>ที่อยู่ :   @sh.Address</h6>
+         @{
+             int star;
+             if (Session["avg"] == null)
+             {
+                <span class="fa fa-star fa-3x "></span>
+                <span class="fa fa-star fa-3x "></span>
+                <span class="fa fa-star fa-3x "></span>
+                <span class="fa fa-star fa-3x "></span>
+                <span class="fa fa-star fa-3x "></span>
+             }
+             else
+             {
+                 star = Convert.ToInt32(Session["avg"]);
+                   if (star == 1)
+                 {
+                    <span class="fa fa-star fa-3x checked"></span>
+                    <span class="fa fa-star fa-3x "></span>
+                    <span class="fa fa-star fa-3x "></span>
+                    <span class="fa fa-star fa-3x "></span>
+                    <span class="fa fa-star fa-3x "></span>
+                 }
+                 else if (star == 2)
+                 {
+                    <span class="fa fa-star fa-3x checked"></span>
+                    <span class="fa fa-star fa-3x checked"></span>
+                    <span class="fa fa-star fa-3x "></span>
+                    <span class="fa fa-star fa-3x "></span>
+                    <span class="fa fa-star fa-3x "></span>
+                 }
+                 else if (star == 3)
+                 {
+                    <span class="fa fa-star fa-3x checked"></span>
+                    <span class="fa fa-star fa-3x checked"></span>
+                    <span class="fa fa-star fa-3x checked"></span>
+                    <span class="fa fa-star fa-3x "></span>
+                    <span class="fa fa-star fa-3x "></span>
+                 }
+                 else if (star == 4)
+                 {
+                    <span class="fa fa-star fa-3x checked"></span>
+                    <span class="fa fa-star fa-3x checked"></span>
+                    <span class="fa fa-star fa-3x checked"></span>
+                    <span class="fa fa-star fa-3x checked"></span>
+                    <span class="fa fa-star fa-3x "></span>
+
+                 }
+                 else if (star == 5)
+                 {
+                    <span class="fa fa-star fa-3x checked"></span>
+                    <span class="fa fa-star fa-3x checked"></span>
+                    <span class="fa fa-star fa-3x checked"></span>
+                    <span class="fa fa-star fa-3x checked"></span>
+                    <span class="fa fa-star fa-3x checked"></span>
+                 }
+                 else
+                 {
+                    <span class="fa fa-star fa-3x "></span>
+                    <span class="fa fa-star fa-3x "></span>
+                    <span class="fa fa-star fa-3x "></span>
+                    <span class="fa fa-star fa-3x "></span>
+                    <span class="fa fa-star fa-3x "></span>
+                 }
+             }
+
+        }
+ 
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="alert alert-dismissible alert-light" style="height: 150px;">
+                @using (Html.BeginForm("RateVote", "Sell", new { id = sh.Customer_Id }, FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                    @Html.AntiForgeryToken()
+                    <br /><br />
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                    </div>
+                    <button type="submit" class = "btn btn-danger">ให้คะแนนคะแนน</button>
+                }
+                <br />
+                <br />
+                <center>
+                    @Html.ActionLink("+เพิ่มสินค้า", "MenuAdd", "DataSell", null, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("อัพเดต", "Updatepic", "DataSell", null, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("รายการขายสินค้า", "Listmyshoporder", "DataSell", new { id = sh.Customer_Id }, new { @class = "btn btn-secondary" })
+                </center>
+            </div>
+
+
+
+            @*<div class="alert alert-dismissible alert-success" style="height: 70px;">
+                <center>
+                    @Html.ActionLink("+เพิ่มสินค้า", "MenuAdd", "DataSell", null, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("อัพเดต", "Updatepic", "DataSell", null, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("รายการขายสินค้า", "#", "#", null, new { @class = "btn btn-secondary" })
+                </center>
+            </div>*@
+        </div>
+        </div>
+        <br/><br />
+<div class="col-md-12">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3855.991089482408!2d102.01850751424153!3d14.881776674115205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311eada1f2cc53f1%3A0x10533e4b3f07a09f!2z4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LmA4LiX4LiE4LmC4LiZ4LmC4Lil4Lii4Li14Liq4Li44Lij4LiZ4Liy4Lij4Li1!5e0!3m2!1sth!2sth!4v1567927081302!5m2!1sth!2sth" 
+            style="width: 1040px; height: 440px;  border:0; " frameborder="0" allowfullscreen=""></iframe>
+</div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")

@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Trainer";
+}
+
+<h2>Trainer</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/content/Index.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    @Styles.Render("~/Content/style.css")
+    @Scripts.Render("~/bundles/modernizr")
+    <title>IndexPet</title>
+
+</head>
+<body>
+        <div class="row">
+            <div class="col-md-3 bg-primary disabled">
+                <br /><br />
+                <div align="center">
+                    @Html.ActionLink("สัตว์เลี้ยง", "Pet", "Sell", new { id = Session["UserID"] }, new { @class = "btn btn-warning", style = "width:180px;height:38px" })
+                </div>
+                <br /><br /><br />
+                <div align="center">
+                    @Html.ActionLink("อาหาร/อุปกรณ์", "Product", "Sell", new { id = Session["UserID"] }, new { @class = "btn btn-warning", style = "width:180px;height:38px" })
+                </div>
+                <br /><br /><br />
+             
+                <div  align="center">
+                    @Html.ActionLink("คอร์สเทรนสัตว์เลี้ยง", "Trainer", "Sell", new { id = Session["UserID"] }, new { @class = "btn btn-warning" , style = "width:180px;height:38px" })
+                </div>
+            </div>
+
+            @using FinalProjectPetey.Models
+            <div class="col-md-9 bg-light disabled">
+                <br />
+                <h3>รายการสินค้า</h3>
+                @using (Html.BeginForm())
+                {
+                    <center>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-10">
+                                    <input maxlength="50" size="18" class="form-control mr-sm-0" type="search" placeholder="Search" name="SearchString" />
+                                </div>
+                                <div class="col-1">
+                                    <input type="submit" class="btn btn-success" value="Search" />
+                                </div>
+                            </div>
+                        </div>
+                    </center>
+                }
+                <br />
+                <div class="row">
+                    @foreach (Trainer p in ViewBag.listProduct)
+                     {
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card mh-100">
+                                <a href="#"><img class="card-img-top" src=@Url.Content("~/Content/images/images_trainer/" + @p.Images) width="700px;" height="250px;"></a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a>@Html.ActionLink(@p.Name, "ViewDetailsTrainer", "ShoppingCart", new { id = p.Trainer_Id }, new { @class = "link" })</a>
+                                    </h4>
+                                    <h5>@Convert.ToInt32(p.Price) ฿</h5>
+                                    <p class="card-text">@p.Details</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+</body>
+</html>
+

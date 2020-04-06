@@ -1,0 +1,104 @@
+﻿
+@model FinalProjectPetey.Models.customer
+
+@{
+    ViewBag.Title = "Rsellproduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+        
+}
+<h2>Rsellproduct</h2>
+
+@using (Html.BeginForm("Rsellproduct", "Account", new { id = Session["UserId"] },FormMethod.Post , new{enctype ="multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+ <br>   
+    <div class="form-horizontal">
+        <h4>customer</h4>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Shop_name, "Shop Name", htmlAttributes: new { @class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Shop_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Shop_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name_Bank, "Bank Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+            @Html.DropDownList("Name_Bank",new List<SelectListItem>
+           {
+               new SelectListItem { Text = "ธนาคารกรุงเทพ" , Value = "ธนาคารกรุงเทพ" , Selected = true},
+               new SelectListItem { Text = "ธนาคารกสิกรไทย" , Value = "ธนาคารกสิกรไทย" },
+               new SelectListItem { Text = "ธนาคารกรุงไทย" , Value = "ธนาคารกรุงไทย" },
+               new SelectListItem { Text = "ธนาคารทหารไทย" , Value = "ธนาคารทหารไทย" },
+               new SelectListItem { Text = "ธนาคารไทยพาณิชย์" , Value = "ธนาคารไทยพาณิชย์" },
+               new SelectListItem { Text = "ธนาคารกรุงศรีอยุธยา" , Value = "ธนาคารกรุงศรีอยุธยา" },
+               new SelectListItem { Text = "ธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร" , Value = "ธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร" },
+               new SelectListItem { Text = "ธนาคารออมสิน" , Value = "ธนาคารออมสิน" },
+               new SelectListItem { Text = "ธนาคารอาคารสงเคราะห์" , Value = "ธนาคารอาคารสงเคราะห์" },
+               new SelectListItem { Text = "ธนาคารอิสลามแห่งประเทศไทย" , Value = "ธนาคารอิสลามแห่งประเทศไทย" }
+
+           }, "Select D", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name_Bank, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name_Owner, "Firstname-Lastname", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name_Owner, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name_Owner, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Card_No, "ID Card Number", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Card_No, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Card_No, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id_Bank, "Account Number", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Id_Bank, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Id_Bank, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="col">
+            @Html.LabelFor(model => model.Images, "รูปภาพ", htmlAttributes: new { @class = "control-label col-md-10" })
+            <script type="text/javascript">
+                            function showImagePreview(input) {
+                                if (input.files && input.files[0]) {
+                                    var filerdr = new FileReader();
+                                    filerdr.onload = function (e) {
+                                        $('#imgPreview').attr('src', e.target.result);
+                                    }
+                                    filerdr.readAsDataURL(input.files[0]);
+                                }
+                            }
+            </script>
+            <div class="card" style="width: 18rem; height: 18rem;">
+                <img id="imgPreview" class="card-img-top" style="width: 18rem;  height: 18rem;">
+            </div>
+            <label for="exampleFormControlFile1">อัพโหลดไฟล์</label><br />
+            <input type="file" class="form-control-file" id="file" onchange="showImagePreview(this)" name="file" />
+        </div><br>
+        <center>
+            <div class="row justify-content-center">
+                <div class="col-md-auto">
+                    <button type="submit" class="btn btn-outline-success">Create</button>
+                </div>
+
+                <div class="col-md-auto">
+                    <button type="reset" class="btn btn-outline-danger">Cancle</button>
+                </div>
+            </div>
+            </center>
+    </div>
+}
+
+

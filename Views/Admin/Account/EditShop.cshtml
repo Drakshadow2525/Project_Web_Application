@@ -1,0 +1,109 @@
+﻿@using FinalProjectPetey.Models;
+@{
+    ViewBag.Title = "EditShop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+}
+
+<h2>EditUser</h2>
+@{
+    var a = (customer)ViewData["Userdata"];
+}
+<head>
+    @Styles.Render("~/Content/Mintyb.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    @using (Html.BeginForm("EditUser1", "Account", new { id = Session["UserId"] }, FormMethod.Get, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <div class="form-horizontal">
+                <h4>customer</h4>
+                <hr />
+                <div class="form-group">
+                    Fullname
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="Name" name="Name" value="@a.Fullname" style="width:590px;">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                Tel
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="Phone" name="Phone" value="@a.Phone_No" style="width:590px;">
+                </div>
+            </div>
+            <div class="form-group">
+                Email
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="Email" name="Email" value="@a.E_mail" style="width:590px;">
+                </div>
+            </div>
+            <div class="form-group">
+                Address
+                <div class="col-md-10">
+                    <textarea type="textarea" class="form-control" placeholder="ที่อยู่" id="Address" name="Address" style="width:590px;height:100px">@a.Address</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                Shop Name
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="Shop_name" name="Shop_name" style="width:590px;" value="@a.Shop_name" />
+                </div>
+            </div>
+            <div class="form-group">
+                Bank Name
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="Name_Bank" name="Name_Bank" style="width:590px;" value="@a.Name_Bank" />
+                </div>
+            </div>
+            <div class="form-group">
+                Account Name
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="Name_Owner" name="Name_Owner" style="width:590px;" value="@a.Name_Owner" />
+                </div>
+            </div>
+            <div class="form-group">
+                Card No
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="Card_No" name="Card_No" style="width:590px;" value="@a.Card_No" />
+                </div>
+            </div>
+            <div class="form-group">
+                Bank Id
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="Id_Bank" name="Id_Bank" style="width:590px;" value="@a.Id_Bank" />
+                </div>
+            </div>
+
+            <div class="col">
+                @Html.LabelFor(model => @a.Images, "รูปภาพ", htmlAttributes: new { @class = "control-label col-md-10" })
+                <script type="text/javascript">
+                            function showImagePreview(input) {
+                                if (input.files && input.files[0]) {
+                                    var filerdr = new FileReader();
+                                    filerdr.onload = function (e) {
+                                        $('#imgPreview').attr('src', e.target.result);
+                                    }
+                                    filerdr.readAsDataURL(input.files[0]);
+                                }
+                            }
+                </script>
+                <div class="card" style="width: 18rem; height: 18rem;">
+                    <img id="imgPreview" class="card-img-top" style="width: 18rem;  height: 18rem;">
+                </div>
+                <label for="exampleFormControlFile1">อัพโหลดไฟล์</label><br />
+                <input type="file" class="form-control-file" id="file" onchange="showImagePreview(this)" name="file" />
+            </div>
+
+            <button type="submit" class="btn btn-success btn-block">บันทึก</button>
+        </div>
+    }
+
+</body>
+
+
+
+
+
+

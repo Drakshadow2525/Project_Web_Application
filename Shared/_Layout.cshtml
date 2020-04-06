@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Petey</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    @Styles.Render("~/Content/bootstrap-Minty.css")
+    @Scripts.Render("~/bundles/modernizr")
+   
+    <style>
+        .cart-box {
+            position: fixed;
+            Top: 80px;
+            left: 1500px;
+            width: 48px;
+            height: 48px;
+            z-index: 2147483000;
+            cursor: pointer;
+            background-position: 50%;
+        }
+
+        .btn-circle {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            padding: 6px 0;
+            font-size: 12px;
+            line-height: 1.428571429;
+            border-radius: 15px;
+        }
+
+            .btn-circle.btn-lg {
+                width: 50px;
+                height: 50px;
+                padding: 10px 16px;
+                font-size: 18px;
+                line-height: 1.33;
+                border-radius: 25px;
+            }
+
+            .btn-circle.btn-xl {
+                width: 70px;
+                height: 70px;
+                padding: 10px 16px;
+                font-size: 24px;
+                line-height: 1.33;
+                border-radius: 35px;
+            }
+
+        .cart-items-count {
+            position: relative;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            top: -55px;
+        }
+
+        .notification-counter {
+            position: absolute;
+            left: 8px;
+            background-color: rgba(212, 19, 13, 1);
+            color: #fff;
+            border-radius: 3px;
+            padding: 1px 3px;
+            font: 8px Verdana;
+        }
+    </style>
+</head>
+
+<body style="background-color:white;">
+    <div class="container">
+        <nav class="navbar-center navbar-expand-lg navbar-dark bg-warning fixed-top">
+            <ul class="navbar-nav justify-content-center d-flex flex-fill">
+                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                &nbsp;&nbsp; &nbsp;&nbsp;
+                <a class="navbar-logo" href="~/Home"><img src=@Url.Content("~/Content/images/logo23.png") width="45" height="45" align="middle" /></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor03">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Home/Contact">ติดต่อเรา</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Home/About">เกี่ยวกับ</a>
+                        </li>
+                    </ul>
+            <ul class="navbar-nav mr-auto">
+                @if (Session["Shop_name"] != null)
+                {
+                
+                    if (Session["Shop_name"] == "3")
+                    {
+
+                        <div class="btn-group" role="group">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;
+                            <button id="btnGroupDrop4" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false" style="width:180px;height:38px">
+                                @Session["UserName"]
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop4">
+                                <a>@Html.ActionLink("หน้าร้านของฉัน", "Shop", "Sell", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                <a>@Html.ActionLink("รายสินค้าที่จำหน่าย", "Listmyshoporder", "DataSell", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                <a>@Html.ActionLink("แก้ไขข้มูลส่วนตัว", "EditShop", "Account", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                            </div>
+                            &nbsp;
+                        </div>
+
+                        <div class="cart-box" id="Normal">
+                            <ul class="nav navbar-nav">
+                                <button class="btn btn-outline-dark btn-circle btn-xl" type="button" onclick="location.href='@Url.Action("AddtoCart", "ShoppingCart" , new {id = -1 })'">
+                                    <img src=@Url.Content("~/Content/images/icons8-shopping-cart-100(1).png") width="35" height="35" align="absmiddle" />
+                                </button>
+                                <span class="cart-items-count"><span class=" notification-counter">@Session["Quantity"]</span></span>
+                            </ul>
+                        </div>
+
+                                    @Html.ActionLink("ออกจากระบบ", "Logout", "Account", null, new { @class = "btn btn-dark " })
+                    }
+                    else if (Session["Shop_name"] == "1")
+                    {
+                        <div class="btn-group" role="group">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;
+                            <button id="btnGroupDrop4" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false" style="width:180px;height:38px">
+                                @Session["UserName"]
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop4">
+                                @Html.ActionLink("แก้ไขข้อมูลส่วนตัว", "EditUser", "Account", new { id = Session["UserId"] }, new { @class = "dropdown-item" })
+                                @*<a class="dropdown-item" href="~/Account/EditUser">แก้ไขข้อมูลส่วนตัว</a>*@
+                            </div>
+
+                            &nbsp;
+                        </div>
+
+                        <div class="cart-box" id="Normal">
+                            <ul class="nav navbar-nav">
+                                        <button class="btn btn-outline-dark btn-circle btn-xl" type="button" onclick="location.href='@Url.Action("AddtoCart", "ShoppingCart" , new {id = -1 })'">
+                                            <img src=@Url.Content("~/Content/images/icons8-shopping-cart-100(1).png") width="35" height="35" align="absmiddle" />
+                                        </button>
+                                        <span class="cart-items-count"><span class=" notification-counter">@Session["Quantity"]</span></span>
+                            </ul>
+                        </div>
+
+                                
+                            
+                                    @Html.ActionLink("ออกจากระบบ", "Logout", "Account", null, new { @class = "btn btn-dark " })
+                    }
+                    else if (Session["Shop_name"] == "2")
+                    {
+                        <div class="btn-group" role="group">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;
+                            <button id="btnGroupDrop4" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false" style="width:180px;height:38px">
+                                @Session["UserName"]
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop4">
+                                <a>@Html.ActionLink("หน้าแอดมิน", "Admin", "Admin", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                <a>@Html.ActionLink("ข้อมูลลูกค้า", "User", "Admin", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                <a>@Html.ActionLink("รายงาน", "Report", "Admin", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                <a>@Html.ActionLink("หน้ารายละเอียดการสั่งสินค้า", "Order", "Admin", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                            </div>
+                            &nbsp;
+                        </div>
+                                @Html.ActionLink("ออกจากระบบ", "Logout", "Account", null, new { @class = "btn btn-dark " })
+                    }
+                    else
+                    {
+                        <div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;
+                            @Html.ActionLink("เข้าสู่ระบบ", "Login", "Account", null, new { @class = "btn btn-dark " })
+                            @Html.ActionLink("สมัครสมาชิก", "accept", "Account", null, new { @class = "btn btn-dark " })
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;
+                        @Html.ActionLink("เข้าสู่ระบบ", "Login", "Account", null, new { @class = "btn btn-dark " })
+                        @Html.ActionLink("สมัครสมาชิก", "accept", "Account", null, new { @class = "btn btn-dark " })
+                    </div>
+                }
+           </ul>
+    </div>
+    </nav>
+        
+        <div class="container body-content">
+            @RenderBody()
+            <br /><br /><br /><br /><br /><br />
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - เว็ป</p>
+            </footer>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

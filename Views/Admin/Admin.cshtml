@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/bootstrap-Minty.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<h2>Admin Manage</h2>
+<body style="background-color:#FFE57E;" align="center">
+    
+    <br /><br /><br /><br /><br />
+        <center>
+            <div class="row">
+                <div class="col-md-6  about_img">
+                    <br /><br /><br />
+                    <img class="img-fluid" src="~/Content/images/ManageUser.png" style="height: 300px;">
+                </div>
+                <div class="col-md-4">
+                    <br /><br /><br /><br />
+                    &nbsp;&nbsp;&nbsp;
+                    <div class="col-6">
+                        @Html.ActionLink("ข้อมูลผู้ใช้งานและร้านค้า", "User", "Admin", new { id = Session["UserID"] }, new { @class = "btn btn-info", style = "width:200px;height:38px" })
+                    </div>
+                    <br />
+                    <div class="col-6">
+                        <div class="btn-group" role="group">
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop4" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false" style="width:200px;height:38px">
+                                    รายการขายสินค้าทั้งหมด
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop4">
+                                    <a>@Html.ActionLink("รายงานยอดขายสัตว์เลี้ยง","ViewOrderDetailspet","OrderDetails", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                    <a>@Html.ActionLink("รายงานยอดขายอุปกรณ์", "ViewOrderDetailsProduct", "OrderDetails", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                    <a>@Html.ActionLink("รายงานยอดขายเทนเนอร์", "ViewOrderDetailsTrainer", "OrderDetails", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    <br />
+                    <div class="col-6">
+                        @Html.ActionLink("รายการสั่งซื้อสินค้าทั้งหมด", "Orders", "Admin", null, new { @class = "dropdown-item" })
+                    </div>
+                    @*<div class="col-6">
+                        <div class="btn-group" role="group">
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop4" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false" style="width:200px;height:38px">
+                                    รายงาน
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop4">
+                                    <a>@Html.ActionLink("รายงานการเข้าใช้เว็บไซต์", "Shop", "Sell", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                    <a>@Html.ActionLink("รายงานยอดขายสินค้า/เดือน", "#", "#", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                    <a>@Html.ActionLink("รายงานยอดขายสินค้า/ปี", "#", "#", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                    <a>@Html.ActionLink("ร้านที่มียอดขายน้อยที่สุด-5-อันดับ", "#", "#", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                    <a>@Html.ActionLink("ร้านที่มียอดขายมากที่สุด-5-อันดับ", "#", "#", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                    <a>@Html.ActionLink("รายงานสัตว์ยอดขายมากที่สุด-5-อันดับ", "#", "#", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                    <a>@Html.ActionLink("รายงานสินค้ายอดขายมากที่สุด-5-อันดับ", "#", "#", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+                    <br />
+                    <div class="col-6">
+                        <div class="btn-group" role="group">
+                            <button id="btnGroupDrop4" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false" style="width:200px;height:38px">
+                                กรองข้อมูลในตาราง
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop4">
+                                <a>@Html.ActionLink("Pet", "Sumcargo", "Admin", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                <a>@Html.ActionLink("Product", "SumcargoPro", "Admin", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                <a>@Html.ActionLink("Trainer", "SumcargoTrainer", "Admin", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                @*<a>@Html.ActionLink("TopPet", "#", "Admin", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                <a>@Html.ActionLink("TopProduct", "#", "Admin", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                                <a>@Html.ActionLink("TopTrainer", "#", "Admin", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </center>
+        <br /><br /><br /><br /><br />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

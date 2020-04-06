@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "ManagUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>ManagamentUser</h2>*@
+<br /><br /><br /><br />
+<div class="row">
+    <div class="col-6">
+        <div class="alert alert-dismissible alert-warning text-dark">
+            <br />
+            <div class="row">
+                <br />
+                <div class="col-2">
+                    &nbsp;&nbsp;<img src="~/Content/images/logo23(1).png" style="width: 50px">&nbsp;&nbsp;
+                </div>
+                <div class="col-6">
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop4" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false" style="width:200px;height:38px">
+                            ข้อมูลผู้ใช้งานและร้านค้า
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop4">
+                            <a>@Html.ActionLink("ผู้ใช้งานทั้งหมด", "User", "Admin", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                            <a>@Html.ActionLink("ผู้ใช้งานทั่วไป", "ManagUser", "Admin", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                            <a>@Html.ActionLink("ร้านค้า", "Shop", "Admin", new { id = Session["UserID"] }, new { @class = "dropdown-item" })</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br /><br />
+            <table class="table table-striped text-dark">
+
+                <tbody>
+                    <tr class="table-dark">
+                        <th scope="row">ชื่อผู้ใช้งาน</th>
+                        <td>สถานะ</td>
+                        <td> </td>
+                    </tr>
+                    <tr class="table-light">
+                        <th scope="row">2</th>
+                        <td>ออนไลน์</td>
+                        <td> <button type="button" class="btn btn-success">ข้อมูล</button> </td>
+                    </tr>
+                    <tr class="table-light">
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td><button type="button" class="btn btn-success">ข้อมูล</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+
+
+    <div class="col-6">
+        <div class="alert alert-dismissible alert-warning text-dark">
+            <br />
+           <h5 class="alert-heading">&nbsp;&nbsp;<img src="~/Content/images/logo23(1).png" style="width: 50px">&nbsp; &nbsp;<b>ข้อมูล</b></h5>
+            <br /><br />
+
+            <table>
+                <tr>
+                    <td>
+                        <small for="staticEmail" class="col-sm-2 col-form-label">E-mail</small>
+                        <div class="col-sm-12">
+
+                            <input type="text" class="form-control" placeholder="" id="inputDefault">
+                        </div>
+                    </td>
+                    <td>
+                        <small for="staticEmail" class="col-sm-2 col-form-label">รหัสผ่าน</small>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" placeholder="" id="inputDefault">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br />
+                        <small for="staticEmail" class="col-sm-2 col-form-label">ชื่อ</small>
+                        <div class="col-sm-12">
+
+                            <input type="text" class="form-control" placeholder="" id="inputDefault">
+                        </div>
+                    </td>
+                    <td>
+                        <br />
+                        <small for="staticEmail" class="col-sm-2 col-form-label">เบอร์โทรศัพท์</small>
+                        <div class="col-sm-12">
+
+                            <input type="text" class="form-control" placeholder="" id="inputDefault">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br />
+                        <small for="staticEmail" class="col-sm-2 col-form-label" style="height: 100px;">ที่อยู่</small>
+                        <div class="col-sm-12">
+
+                            <input type="text" class="form-control" placeholder="" id="inputDefault">
+                        </div>
+                    </td>
+                    <td>
+                        <br />
+                        <small for="staticEmail" class="col-sm-2 col-form-label">เบอร์โทรศัพท์</small>
+                        <div class="col-sm-12">
+
+                            <input type="text" class="form-control" placeholder="" id="inputDefault">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <center>
+                <br /><br /><br />
+                <button type="button" class="btn btn-danger">อัพเดต</button> &nbsp;&nbsp;
+                <button type="button" class="btn btn-danger">บล็อค</button>
+                <br /><br />
+            </center>
+        </div>
+    </div>
+</div>
+@*</td>
+        </tr>
+    </table>*@
+
+
+
+

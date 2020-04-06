@@ -1,0 +1,39 @@
+﻿@using FinalProjectPetey.Models;
+@{
+    ViewBag.Title = "SumCargoTrainer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Petey</title>
+    @Styles.Render("~/Content/bootstrap-Minty.css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+
+<h2>SumCargo</h2>
+<center>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>AddSumcargo</th>
+        </tr>
+        @foreach (Trainer su in ViewBag.listProduct)
+        {
+
+            <tr>
+                <td>@su.Trainer_Id;</td>
+                <td>@su.Name;</td>
+                <td>@su.Price</td>
+                <td>@Html.ActionLink("Sumcargo", "SumcargoTrainer", "Admin", new { @class = "link" })</td>
+            </tr>
+        }
+    </table>
+</center>
+<input type="submit" value="filter" />
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

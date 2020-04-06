@@ -1,0 +1,136 @@
+﻿@model IEnumerable<FinalProjectPetey.Models.OrderDetailsViewModel>
+
+@{
+    ViewBag.Title = "ViewOrderDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewOrderDetails</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Gene)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameProduct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameTrainer)
+        </th>
+        </tr>
+
+        <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrandProduct)
+        </th>
+        </tr>
+        <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PricePet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceProduct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceTrainer)
+        </th>
+        </tr>
+        <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AmountProduct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AmountTrainer)
+        </th>
+        </tr>
+        <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalProduct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalTrainer)
+        </th>
+        <th></th>
+   </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gene)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameProduct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameTrainer)
+            </td>
+        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrandProduct)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PricePet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceProduct)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceTrainer)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AmountProduct)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AmountTrainer)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalProduct)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalTrainer)
+        </td>
+    </tr>
+
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+
+}
+
+</table>

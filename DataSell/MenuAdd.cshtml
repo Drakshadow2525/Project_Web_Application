@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "MenuAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    @Styles.Render("~/Content/style.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="background-color:#FFE57E;" align="center">
+    <br /><br /><br />
+    <h1>เพิ่มสินค้าขาย</h1>
+    <div class="row">
+        <div class="col-md-6  about_img">
+            <br /><br /><br />
+            <img class="img-fluid" src="~/Content/images/dogMenuadd.png" style="height: 400px;">
+        </div>
+        <div class="col-md-5">
+            <center>
+                <div  style="height: 500px; width: 670px;">
+                    <center>
+                        <br /><br /><br /><br /><br />
+                        @Html.ActionLink("ขายสัตว์เลี้ยง", "CreatePet", "DataSell", null, new { @class = "btn btn-success", style = "width:170px; height:50px" })<br /><br /><br />
+                        @Html.ActionLink("ขายอุปกรณ์", "CreateProduct", "DataSell", null, new { @class = "btn btn-warning", style = "width:170px; height:50px" })<br /><br /><br />
+                        @Html.ActionLink("ขายคอร์สเทรนเนอร์", "CreateTrainer", "DataSell", null, new { @class = "btn btn-secondary", style = "width:170px; height:50px" })<br /><br /><br />
+
+                        @*<button type="button" class="btn btn-success" style="height: 50px; width: 170px;">สัตว์เลี้ยง</button><br /><br /><br />
+                            <button type="button" class="btn btn-warning" style="height: 50px; width: 170px;">อุปกรณ์</button><br /><br /><br />
+                            <button type="button" class="btn btn-secondary" style="height: 50px; width: 170px;">เทรนเนอร์</button><br /><br /><br />*@
+                    </center>
+
+                </div>
+            </center>
+
+        </div>
+    </div>
+
+</body>
+</html>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
