@@ -1,0 +1,1127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProjectPeteyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id_L" />
+          </Key>
+          <Property Name="Id_L" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Distance" Type="nvarchar" MaxLength="500" />
+          <Property Name="Distance2" Type="nvarchar" MaxLength="500" />
+          <Property Name="Customer_id" Type="int" />
+          <Property Name="ID_Pet" Type="int" />
+          <Property Name="ID_Product" Type="int" />
+          <Property Name="ID_Trainer" Type="int" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="Customer_Id" />
+          </Key>
+          <Property Name="Customer_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ConfirmPassword" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Fullname" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Birthdate" Type="date" Nullable="false" />
+          <Property Name="Phone_No" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="E_mail" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Shop_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name_Bank" Type="nvarchar" MaxLength="30" />
+          <Property Name="Name_Owner" Type="nvarchar" MaxLength="60" />
+          <Property Name="Card_No" Type="nvarchar" MaxLength="14" />
+          <Property Name="Id_Bank" Type="nvarchar" MaxLength="11" />
+          <Property Name="Images" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Order_Id" />
+          </Key>
+          <Property Name="Order_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_Id" Type="int" />
+          <Property Name="Grand_total" Type="money" />
+          <Property Name="Order_date" Type="date" />
+          <Property Name="Ship_date" Type="date" />
+          <Property Name="Order_status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Card_No" Type="nvarchar" MaxLength="14" />
+          <Property Name="Card_Name" Type="nvarchar" MaxLength="40" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="200" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Orders_Details">
+          <Key>
+            <PropertyRef Name="Order_Details_Id" />
+          </Key>
+          <Property Name="Order_Details_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Order_Id" Type="int" />
+          <Property Name="Product_Id" Type="int" />
+          <Property Name="Product_Id2" Type="int" />
+          <Property Name="Product_Id3" Type="int" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Sub_total" Type="money" />
+        </EntityType>
+        <EntityType Name="Pet">
+          <Key>
+            <PropertyRef Name="Pet_Id" />
+          </Key>
+          <Property Name="Pet_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Gene" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Birthdate" Type="date" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="History" Type="nvarchar" MaxLength="300" />
+          <Property Name="Images" Type="nvarchar" MaxLength="100" />
+          <Property Name="Images2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Images3" Type="nvarchar" MaxLength="100" />
+          <Property Name="Images4" Type="nvarchar" MaxLength="100" />
+          <Property Name="Images5" Type="nvarchar" MaxLength="20" />
+          <Property Name="Typess" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="PeviewStar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_id" Type="int" />
+          <Property Name="Score" Type="int" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Product_Id" />
+          </Key>
+          <Property Name="Product_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_id" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Pro_date" Type="date" Nullable="false" />
+          <Property Name="Exp_date" Type="date" Nullable="false" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="40" />
+          <Property Name="Detalis" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Images" Type="nvarchar" MaxLength="100" />
+          <Property Name="Typess" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="SumCargo">
+          <Key>
+            <PropertyRef Name="Sum_Id" />
+          </Key>
+          <Property Name="Sum_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Id" Type="int" />
+          <Property Name="Product_Id2" Type="int" />
+          <Property Name="Product_Id3" Type="int" />
+        </EntityType>
+        <EntityType Name="Top">
+          <Key>
+            <PropertyRef Name="Top_id" />
+          </Key>
+          <Property Name="Top_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_id" Type="int" />
+          <Property Name="Product_id2" Type="int" />
+          <Property Name="Product_id3" Type="int" />
+          <Property Name="Counts" Type="int" />
+        </EntityType>
+        <EntityType Name="Trainer">
+          <Key>
+            <PropertyRef Name="Trainer_Id" />
+          </Key>
+          <Property Name="Trainer_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Details" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Images" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__Comment__Custome__31EC6D26">
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="Customer_Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="Customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Customer__35BCFE0A">
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="Customer_Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Customer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders_De__Order__38996AB5">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="Orders_Details" Type="Self.Orders_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Order_Id" />
+            </Principal>
+            <Dependent Role="Orders_Details">
+              <PropertyRef Name="Order_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders_De__Produ__398D8EEE">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Orders_Details" Type="Self.Orders_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_Id" />
+            </Principal>
+            <Dependent Role="Orders_Details">
+              <PropertyRef Name="Product_Id2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders_De__Produ__3A81B327">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+          <End Role="Orders_Details" Type="Self.Orders_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="Trainer_Id" />
+            </Principal>
+            <Dependent Role="Orders_Details">
+              <PropertyRef Name="Product_Id3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders_De__Produ__3B75D760">
+          <End Role="Pet" Type="Self.Pet" Multiplicity="0..1" />
+          <End Role="Orders_Details" Type="Self.Orders_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pet">
+              <PropertyRef Name="Pet_Id" />
+            </Principal>
+            <Dependent Role="Orders_Details">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pet__Customer_id__276EDEB3">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="Customer_Id" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="Customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PeviewSta__Custo__49C3F6B7">
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="PeviewStar" Type="Self.PeviewStar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="Customer_Id" />
+            </Principal>
+            <Dependent Role="PeviewStar">
+              <PropertyRef Name="Customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__Custome__2A4B4B5E">
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="Customer_Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SumCargo__Produc__4CA06362">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="SumCargo" Type="Self.SumCargo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_Id" />
+            </Principal>
+            <Dependent Role="SumCargo">
+              <PropertyRef Name="Product_Id2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SumCargo__Produc__4D94879B">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+          <End Role="SumCargo" Type="Self.SumCargo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="Trainer_Id" />
+            </Principal>
+            <Dependent Role="SumCargo">
+              <PropertyRef Name="Product_Id3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SumCargo__Produc__4E88ABD4">
+          <End Role="Pet" Type="Self.Pet" Multiplicity="0..1" />
+          <End Role="SumCargo" Type="Self.SumCargo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pet">
+              <PropertyRef Name="Pet_Id" />
+            </Principal>
+            <Dependent Role="SumCargo">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Top__Product_id__5165187F">
+          <End Role="Pet" Type="Self.Pet" Multiplicity="0..1" />
+          <End Role="Top" Type="Self.Top" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pet">
+              <PropertyRef Name="Pet_Id" />
+            </Principal>
+            <Dependent Role="Top">
+              <PropertyRef Name="Product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Top__Product_id2__52593CB8">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Top" Type="Self.Top" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_Id" />
+            </Principal>
+            <Dependent Role="Top">
+              <PropertyRef Name="Product_id2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Top__Product_id3__534D60F1">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+          <End Role="Top" Type="Self.Top" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="Trainer_Id" />
+            </Principal>
+            <Dependent Role="Top">
+              <PropertyRef Name="Product_id3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Trainer__Custome__2D27B809">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="Customer_Id" />
+            </Principal>
+            <Dependent Role="Trainer">
+              <PropertyRef Name="Customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Pet">
+          <End Role="Pet" Type="Self.Pet" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pet">
+              <PropertyRef Name="Pet_Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ID_Pet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ID_Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Trainer">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="Trainer_Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ID_Trainer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectPeteyModelStoreContainer">
+          <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders_Details" EntityType="Self.Orders_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pet" EntityType="Self.Pet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PeviewStar" EntityType="Self.PeviewStar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SumCargo" EntityType="Self.SumCargo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Top" EntityType="Self.Top" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trainer" EntityType="Self.Trainer" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Comment__Custome__31EC6D26" Association="Self.FK__Comment__Custome__31EC6D26">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Customer__35BCFE0A" Association="Self.FK__Orders__Customer__35BCFE0A">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders_De__Order__38996AB5" Association="Self.FK__Orders_De__Order__38996AB5">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Orders_Details" EntitySet="Orders_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders_De__Produ__398D8EEE" Association="Self.FK__Orders_De__Produ__398D8EEE">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Orders_Details" EntitySet="Orders_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders_De__Produ__3A81B327" Association="Self.FK__Orders_De__Produ__3A81B327">
+            <End Role="Trainer" EntitySet="Trainer" />
+            <End Role="Orders_Details" EntitySet="Orders_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders_De__Produ__3B75D760" Association="Self.FK__Orders_De__Produ__3B75D760">
+            <End Role="Pet" EntitySet="Pet" />
+            <End Role="Orders_Details" EntitySet="Orders_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pet__Customer_id__276EDEB3" Association="Self.FK__Pet__Customer_id__276EDEB3">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="Pet" EntitySet="Pet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PeviewSta__Custo__49C3F6B7" Association="Self.FK__PeviewSta__Custo__49C3F6B7">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="PeviewStar" EntitySet="PeviewStar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__Custome__2A4B4B5E" Association="Self.FK__Product__Custome__2A4B4B5E">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SumCargo__Produc__4CA06362" Association="Self.FK__SumCargo__Produc__4CA06362">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SumCargo" EntitySet="SumCargo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SumCargo__Produc__4D94879B" Association="Self.FK__SumCargo__Produc__4D94879B">
+            <End Role="Trainer" EntitySet="Trainer" />
+            <End Role="SumCargo" EntitySet="SumCargo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SumCargo__Produc__4E88ABD4" Association="Self.FK__SumCargo__Produc__4E88ABD4">
+            <End Role="Pet" EntitySet="Pet" />
+            <End Role="SumCargo" EntitySet="SumCargo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Top__Product_id__5165187F" Association="Self.FK__Top__Product_id__5165187F">
+            <End Role="Pet" EntitySet="Pet" />
+            <End Role="Top" EntitySet="Top" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Top__Product_id2__52593CB8" Association="Self.FK__Top__Product_id2__52593CB8">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Top" EntitySet="Top" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Top__Product_id3__534D60F1" Association="Self.FK__Top__Product_id3__534D60F1">
+            <End Role="Trainer" EntitySet="Trainer" />
+            <End Role="Top" EntitySet="Top" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Trainer__Custome__2D27B809" Association="Self.FK__Trainer__Custome__2D27B809">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="Trainer" EntitySet="Trainer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Pet" Association="Self.FK_Comment_Pet">
+            <End Role="Pet" EntitySet="Pet" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Product" Association="Self.FK_Comment_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Trainer" Association="Self.FK_Comment_Trainer">
+            <End Role="Trainer" EntitySet="Trainer" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectPeteyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id_L" />
+          </Key>
+          <Property Name="Id_L" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Distance" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Distance2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Customer_id" Type="Int32" />
+          <Property Name="ID_Pet" Type="Int32" />
+          <Property Name="ID_Product" Type="Int32" />
+          <Property Name="ID_Trainer" Type="Int32" />
+          <NavigationProperty Name="customer" Relationship="Self.FK__Comment__Custome__31EC6D26" FromRole="Comment" ToRole="customer" />
+          <NavigationProperty Name="Pet" Relationship="Self.FK_Comment_Pet" FromRole="Comment" ToRole="Pet" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Comment_Product" FromRole="Comment" ToRole="Product" />
+          <NavigationProperty Name="Trainer" Relationship="Self.FK_Comment_Trainer" FromRole="Comment" ToRole="Trainer" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="Customer_Id" />
+          </Key>
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fullname" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Birthdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Phone_No" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="E_mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Shop_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name_Bank" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Name_Owner" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Card_No" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Bank" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Images" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK__Comment__Custome__31EC6D26" FromRole="customer" ToRole="Comment" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Customer__35BCFE0A" FromRole="customer" ToRole="Orders" />
+          <NavigationProperty Name="Pets" Relationship="Self.FK__Pet__Customer_id__276EDEB3" FromRole="customer" ToRole="Pet" />
+          <NavigationProperty Name="PeviewStars" Relationship="Self.FK__PeviewSta__Custo__49C3F6B7" FromRole="customer" ToRole="PeviewStar" />
+          <NavigationProperty Name="Products" Relationship="Self.FK__Product__Custome__2A4B4B5E" FromRole="customer" ToRole="Product" />
+          <NavigationProperty Name="Trainers" Relationship="Self.FK__Trainer__Custome__2D27B809" FromRole="customer" ToRole="Trainer" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Order_Id" />
+          </Key>
+          <Property Name="Order_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_Id" Type="Int32" />
+          <Property Name="Grand_total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Order_date" Type="DateTime" Precision="0" />
+          <Property Name="Ship_date" Type="DateTime" Precision="0" />
+          <Property Name="Order_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Card_No" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="Card_Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="customer" Relationship="Self.FK__Orders__Customer__35BCFE0A" FromRole="Orders" ToRole="customer" />
+          <NavigationProperty Name="Orders_Details" Relationship="Self.FK__Orders_De__Order__38996AB5" FromRole="Orders" ToRole="Orders_Details" />
+        </EntityType>
+        <EntityType Name="Orders_Details">
+          <Key>
+            <PropertyRef Name="Order_Details_Id" />
+          </Key>
+          <Property Name="Order_Details_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Order_Id" Type="Int32" />
+          <Property Name="Product_Id" Type="Int32" />
+          <Property Name="Product_Id2" Type="Int32" />
+          <Property Name="Product_Id3" Type="Int32" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="Sub_total" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__Orders_De__Order__38996AB5" FromRole="Orders_Details" ToRole="Orders" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Orders_De__Produ__398D8EEE" FromRole="Orders_Details" ToRole="Product" />
+          <NavigationProperty Name="Trainer" Relationship="Self.FK__Orders_De__Produ__3A81B327" FromRole="Orders_Details" ToRole="Trainer" />
+          <NavigationProperty Name="Pet" Relationship="Self.FK__Orders_De__Produ__3B75D760" FromRole="Orders_Details" ToRole="Pet" />
+        </EntityType>
+        <EntityType Name="Pet">
+          <Key>
+            <PropertyRef Name="Pet_Id" />
+          </Key>
+          <Property Name="Pet_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gene" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Birthdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="History" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Images" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Images2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Images3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Images4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Images5" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Typess" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_Pet" FromRole="Pet" ToRole="Comment" />
+          <NavigationProperty Name="customer" Relationship="Self.FK__Pet__Customer_id__276EDEB3" FromRole="Pet" ToRole="customer" />
+          <NavigationProperty Name="Orders_Details" Relationship="Self.FK__Orders_De__Produ__3B75D760" FromRole="Pet" ToRole="Orders_Details" />
+          <NavigationProperty Name="SumCargoes" Relationship="Self.FK__SumCargo__Produc__4E88ABD4" FromRole="Pet" ToRole="SumCargo" />
+          <NavigationProperty Name="Tops" Relationship="Self.FK__Top__Product_id__5165187F" FromRole="Pet" ToRole="Top" />
+        </EntityType>
+        <EntityType Name="PeviewStar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_id" Type="Int32" />
+          <Property Name="Score" Type="Int32" />
+          <NavigationProperty Name="customer" Relationship="Self.FK__PeviewSta__Custo__49C3F6B7" FromRole="PeviewStar" ToRole="customer" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Product_Id" />
+          </Key>
+          <Property Name="Product_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_id" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Pro_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Exp_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Brand" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Detalis" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Images" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Typess" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_Product" FromRole="Product" ToRole="Comment" />
+          <NavigationProperty Name="customer" Relationship="Self.FK__Product__Custome__2A4B4B5E" FromRole="Product" ToRole="customer" />
+          <NavigationProperty Name="Orders_Details" Relationship="Self.FK__Orders_De__Produ__398D8EEE" FromRole="Product" ToRole="Orders_Details" />
+          <NavigationProperty Name="SumCargoes" Relationship="Self.FK__SumCargo__Produc__4CA06362" FromRole="Product" ToRole="SumCargo" />
+          <NavigationProperty Name="Tops" Relationship="Self.FK__Top__Product_id2__52593CB8" FromRole="Product" ToRole="Top" />
+        </EntityType>
+        <EntityType Name="SumCargo">
+          <Key>
+            <PropertyRef Name="Sum_Id" />
+          </Key>
+          <Property Name="Sum_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Id" Type="Int32" />
+          <Property Name="Product_Id2" Type="Int32" />
+          <Property Name="Product_Id3" Type="Int32" />
+          <NavigationProperty Name="Pet" Relationship="Self.FK__SumCargo__Produc__4E88ABD4" FromRole="SumCargo" ToRole="Pet" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__SumCargo__Produc__4CA06362" FromRole="SumCargo" ToRole="Product" />
+          <NavigationProperty Name="Trainer" Relationship="Self.FK__SumCargo__Produc__4D94879B" FromRole="SumCargo" ToRole="Trainer" />
+        </EntityType>
+        <EntityType Name="Top">
+          <Key>
+            <PropertyRef Name="Top_id" />
+          </Key>
+          <Property Name="Top_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_id" Type="Int32" />
+          <Property Name="Product_id2" Type="Int32" />
+          <Property Name="Product_id3" Type="Int32" />
+          <Property Name="Counts" Type="Int32" />
+          <NavigationProperty Name="Pet" Relationship="Self.FK__Top__Product_id__5165187F" FromRole="Top" ToRole="Pet" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Top__Product_id2__52593CB8" FromRole="Top" ToRole="Product" />
+          <NavigationProperty Name="Trainer" Relationship="Self.FK__Top__Product_id3__534D60F1" FromRole="Top" ToRole="Trainer" />
+        </EntityType>
+        <EntityType Name="Trainer">
+          <Key>
+            <PropertyRef Name="Trainer_Id" />
+          </Key>
+          <Property Name="Trainer_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Details" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Images" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_Trainer" FromRole="Trainer" ToRole="Comment" />
+          <NavigationProperty Name="customer" Relationship="Self.FK__Trainer__Custome__2D27B809" FromRole="Trainer" ToRole="customer" />
+          <NavigationProperty Name="Orders_Details" Relationship="Self.FK__Orders_De__Produ__3A81B327" FromRole="Trainer" ToRole="Orders_Details" />
+          <NavigationProperty Name="SumCargoes" Relationship="Self.FK__SumCargo__Produc__4D94879B" FromRole="Trainer" ToRole="SumCargo" />
+          <NavigationProperty Name="Tops" Relationship="Self.FK__Top__Product_id3__534D60F1" FromRole="Trainer" ToRole="Top" />
+        </EntityType>
+        <Association Name="FK__Comment__Custome__31EC6D26">
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="Customer_Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="Customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Pet">
+          <End Role="Pet" Type="Self.Pet" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pet">
+              <PropertyRef Name="Pet_Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ID_Pet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ID_Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Trainer">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="Trainer_Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ID_Trainer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Customer__35BCFE0A">
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="Customer_Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Customer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pet__Customer_id__276EDEB3">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="Customer_Id" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="Customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PeviewSta__Custo__49C3F6B7">
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="PeviewStar" Type="Self.PeviewStar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="Customer_Id" />
+            </Principal>
+            <Dependent Role="PeviewStar">
+              <PropertyRef Name="Customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__Custome__2A4B4B5E">
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="Customer_Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Trainer__Custome__2D27B809">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="Customer_Id" />
+            </Principal>
+            <Dependent Role="Trainer">
+              <PropertyRef Name="Customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders_De__Order__38996AB5">
+          <End Role="Orders" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Orders_Details" Type="Self.Orders_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Order_Id" />
+            </Principal>
+            <Dependent Role="Orders_Details">
+              <PropertyRef Name="Order_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders_De__Produ__398D8EEE">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Orders_Details" Type="Self.Orders_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_Id" />
+            </Principal>
+            <Dependent Role="Orders_Details">
+              <PropertyRef Name="Product_Id2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders_De__Produ__3A81B327">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+          <End Role="Orders_Details" Type="Self.Orders_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="Trainer_Id" />
+            </Principal>
+            <Dependent Role="Orders_Details">
+              <PropertyRef Name="Product_Id3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders_De__Produ__3B75D760">
+          <End Role="Pet" Type="Self.Pet" Multiplicity="0..1" />
+          <End Role="Orders_Details" Type="Self.Orders_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pet">
+              <PropertyRef Name="Pet_Id" />
+            </Principal>
+            <Dependent Role="Orders_Details">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SumCargo__Produc__4E88ABD4">
+          <End Role="Pet" Type="Self.Pet" Multiplicity="0..1" />
+          <End Role="SumCargo" Type="Self.SumCargo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pet">
+              <PropertyRef Name="Pet_Id" />
+            </Principal>
+            <Dependent Role="SumCargo">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Top__Product_id__5165187F">
+          <End Role="Pet" Type="Self.Pet" Multiplicity="0..1" />
+          <End Role="Top" Type="Self.Top" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pet">
+              <PropertyRef Name="Pet_Id" />
+            </Principal>
+            <Dependent Role="Top">
+              <PropertyRef Name="Product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SumCargo__Produc__4CA06362">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="SumCargo" Type="Self.SumCargo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_Id" />
+            </Principal>
+            <Dependent Role="SumCargo">
+              <PropertyRef Name="Product_Id2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Top__Product_id2__52593CB8">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Top" Type="Self.Top" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_Id" />
+            </Principal>
+            <Dependent Role="Top">
+              <PropertyRef Name="Product_id2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SumCargo__Produc__4D94879B">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+          <End Role="SumCargo" Type="Self.SumCargo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="Trainer_Id" />
+            </Principal>
+            <Dependent Role="SumCargo">
+              <PropertyRef Name="Product_Id3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Top__Product_id3__534D60F1">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+          <End Role="Top" Type="Self.Top" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="Trainer_Id" />
+            </Principal>
+            <Dependent Role="Top">
+              <PropertyRef Name="Product_id3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectPeteyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Comments" EntityType="Self.Comment" />
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Orders_Details" EntityType="Self.Orders_Details" />
+          <EntitySet Name="Pets" EntityType="Self.Pet" />
+          <EntitySet Name="PeviewStars" EntityType="Self.PeviewStar" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="SumCargoes" EntityType="Self.SumCargo" />
+          <EntitySet Name="Tops" EntityType="Self.Top" />
+          <EntitySet Name="Trainers" EntityType="Self.Trainer" />
+          <AssociationSet Name="FK__Comment__Custome__31EC6D26" Association="Self.FK__Comment__Custome__31EC6D26">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Pet" Association="Self.FK_Comment_Pet">
+            <End Role="Pet" EntitySet="Pets" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Product" Association="Self.FK_Comment_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Trainer" Association="Self.FK_Comment_Trainer">
+            <End Role="Trainer" EntitySet="Trainers" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Customer__35BCFE0A" Association="Self.FK__Orders__Customer__35BCFE0A">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pet__Customer_id__276EDEB3" Association="Self.FK__Pet__Customer_id__276EDEB3">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="Pet" EntitySet="Pets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PeviewSta__Custo__49C3F6B7" Association="Self.FK__PeviewSta__Custo__49C3F6B7">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="PeviewStar" EntitySet="PeviewStars" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__Custome__2A4B4B5E" Association="Self.FK__Product__Custome__2A4B4B5E">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Trainer__Custome__2D27B809" Association="Self.FK__Trainer__Custome__2D27B809">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="Trainer" EntitySet="Trainers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders_De__Order__38996AB5" Association="Self.FK__Orders_De__Order__38996AB5">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Orders_Details" EntitySet="Orders_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders_De__Produ__398D8EEE" Association="Self.FK__Orders_De__Produ__398D8EEE">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Orders_Details" EntitySet="Orders_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders_De__Produ__3A81B327" Association="Self.FK__Orders_De__Produ__3A81B327">
+            <End Role="Trainer" EntitySet="Trainers" />
+            <End Role="Orders_Details" EntitySet="Orders_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders_De__Produ__3B75D760" Association="Self.FK__Orders_De__Produ__3B75D760">
+            <End Role="Pet" EntitySet="Pets" />
+            <End Role="Orders_Details" EntitySet="Orders_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SumCargo__Produc__4E88ABD4" Association="Self.FK__SumCargo__Produc__4E88ABD4">
+            <End Role="Pet" EntitySet="Pets" />
+            <End Role="SumCargo" EntitySet="SumCargoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Top__Product_id__5165187F" Association="Self.FK__Top__Product_id__5165187F">
+            <End Role="Pet" EntitySet="Pets" />
+            <End Role="Top" EntitySet="Tops" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SumCargo__Produc__4CA06362" Association="Self.FK__SumCargo__Produc__4CA06362">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="SumCargo" EntitySet="SumCargoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Top__Product_id2__52593CB8" Association="Self.FK__Top__Product_id2__52593CB8">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Top" EntitySet="Tops" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SumCargo__Produc__4D94879B" Association="Self.FK__SumCargo__Produc__4D94879B">
+            <End Role="Trainer" EntitySet="Trainers" />
+            <End Role="SumCargo" EntitySet="SumCargoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Top__Product_id3__534D60F1" Association="Self.FK__Top__Product_id3__534D60F1">
+            <End Role="Trainer" EntitySet="Trainers" />
+            <End Role="Top" EntitySet="Tops" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjectPeteyModelStoreContainer" CdmEntityContainer="ProjectPeteyEntities">
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="ProjectPeteyModel.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="Id_L" ColumnName="Id_L" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Distance2" ColumnName="Distance2" />
+                <ScalarProperty Name="Customer_id" ColumnName="Customer_id" />
+                <ScalarProperty Name="ID_Pet" ColumnName="ID_Pet" />
+                <ScalarProperty Name="ID_Product" ColumnName="ID_Product" />
+                <ScalarProperty Name="ID_Trainer" ColumnName="ID_Trainer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="ProjectPeteyModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+                <ScalarProperty Name="Phone_No" ColumnName="Phone_No" />
+                <ScalarProperty Name="E_mail" ColumnName="E_mail" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Shop_name" ColumnName="Shop_name" />
+                <ScalarProperty Name="Name_Bank" ColumnName="Name_Bank" />
+                <ScalarProperty Name="Name_Owner" ColumnName="Name_Owner" />
+                <ScalarProperty Name="Card_No" ColumnName="Card_No" />
+                <ScalarProperty Name="Id_Bank" ColumnName="Id_Bank" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="ProjectPeteyModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="Grand_total" ColumnName="Grand_total" />
+                <ScalarProperty Name="Order_date" ColumnName="Order_date" />
+                <ScalarProperty Name="Ship_date" ColumnName="Ship_date" />
+                <ScalarProperty Name="Order_status" ColumnName="Order_status" />
+                <ScalarProperty Name="Card_No" ColumnName="Card_No" />
+                <ScalarProperty Name="Card_Name" ColumnName="Card_Name" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders_Details">
+            <EntityTypeMapping TypeName="ProjectPeteyModel.Orders_Details">
+              <MappingFragment StoreEntitySet="Orders_Details">
+                <ScalarProperty Name="Order_Details_Id" ColumnName="Order_Details_Id" />
+                <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="Product_Id2" ColumnName="Product_Id2" />
+                <ScalarProperty Name="Product_Id3" ColumnName="Product_Id3" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Sub_total" ColumnName="Sub_total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pets">
+            <EntityTypeMapping TypeName="ProjectPeteyModel.Pet">
+              <MappingFragment StoreEntitySet="Pet">
+                <ScalarProperty Name="Pet_Id" ColumnName="Pet_Id" />
+                <ScalarProperty Name="Customer_id" ColumnName="Customer_id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Gene" ColumnName="Gene" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="History" ColumnName="History" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Images2" ColumnName="Images2" />
+                <ScalarProperty Name="Images3" ColumnName="Images3" />
+                <ScalarProperty Name="Images4" ColumnName="Images4" />
+                <ScalarProperty Name="Images5" ColumnName="Images5" />
+                <ScalarProperty Name="Typess" ColumnName="Typess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PeviewStars">
+            <EntityTypeMapping TypeName="ProjectPeteyModel.PeviewStar">
+              <MappingFragment StoreEntitySet="PeviewStar">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Customer_id" ColumnName="Customer_id" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="ProjectPeteyModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="Customer_id" ColumnName="Customer_id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Pro_date" ColumnName="Pro_date" />
+                <ScalarProperty Name="Exp_date" ColumnName="Exp_date" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Detalis" ColumnName="Detalis" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Typess" ColumnName="Typess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SumCargoes">
+            <EntityTypeMapping TypeName="ProjectPeteyModel.SumCargo">
+              <MappingFragment StoreEntitySet="SumCargo">
+                <ScalarProperty Name="Sum_Id" ColumnName="Sum_Id" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="Product_Id2" ColumnName="Product_Id2" />
+                <ScalarProperty Name="Product_Id3" ColumnName="Product_Id3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tops">
+            <EntityTypeMapping TypeName="ProjectPeteyModel.Top">
+              <MappingFragment StoreEntitySet="Top">
+                <ScalarProperty Name="Top_id" ColumnName="Top_id" />
+                <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+                <ScalarProperty Name="Product_id2" ColumnName="Product_id2" />
+                <ScalarProperty Name="Product_id3" ColumnName="Product_id3" />
+                <ScalarProperty Name="Counts" ColumnName="Counts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trainers">
+            <EntityTypeMapping TypeName="ProjectPeteyModel.Trainer">
+              <MappingFragment StoreEntitySet="Trainer">
+                <ScalarProperty Name="Trainer_Id" ColumnName="Trainer_Id" />
+                <ScalarProperty Name="Customer_id" ColumnName="Customer_id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+@{
+    ViewBag.Title = "Condition";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/bootstrap-Minty.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body style="background-color:#FFE57E;" align="center">
+    <br /><br /><br />
+    <div>
+        <center>
+        
+                <center>
+                    <div class="about_img">
+                        <img class="img-fluid" src="~/Content/images/store.jpg" style="height: 300px;">
+                    </div>
+                    
+                        <br /><br />
+                        <h6>ลงทะเบียนขายสินค้า หรือขายสัตว์เลี้ยงตอนนี้</h6>
+                        <br />
+                        @Html.ActionLink("ลงทะเบียนขายสินค้า", "Rsellproduct", "Account", null, new { @class = "btn btn-success width:50px; height: 170px" })&nbsp; &nbsp; 
+                        @Html.ActionLink("เข้าสู่เว็บไซต์", "Index", "Home", null, new { @class = "btn btn-warning width:50px; height: 170px" })
+               </center>
+
+
+        </center>
+
+    </div>
+</body>
+</html>
+
+
+

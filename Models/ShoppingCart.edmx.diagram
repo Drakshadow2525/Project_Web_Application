@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2e0a74147fd0455bb0eb4d560b2f1ef0" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjectPeteyModel.Comment" Width="1.5" PointX="5.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectPeteyModel.customer" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectPeteyModel.Order" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectPeteyModel.Orders_Details" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectPeteyModel.Pet" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectPeteyModel.PeviewStar" Width="1.5" PointX="3" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectPeteyModel.Product" Width="1.5" PointX="3" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectPeteyModel.SumCargo" Width="1.5" PointX="5.25" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectPeteyModel.Top" Width="1.5" PointX="8.25" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectPeteyModel.Trainer" Width="1.5" PointX="3" PointY="25.5" IsExpanded="true" />
+        <AssociationConnector Association="ProjectPeteyModel.FK__Comment__Custome__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK_Comment_Pet" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK_Comment_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK_Comment_Trainer" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK__Orders__Customer__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK__Pet__Customer_id__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK__PeviewSta__Custo__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK__Product__Custome__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK__Trainer__Custome__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK__Orders_De__Order__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK__Orders_De__Produ__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK__Orders_De__Produ__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK__Orders_De__Produ__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK__SumCargo__Produc__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK__Top__Product_id__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK__SumCargo__Produc__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK__Top__Product_id2__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK__SumCargo__Produc__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectPeteyModel.FK__Top__Product_id3__534D60F1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
